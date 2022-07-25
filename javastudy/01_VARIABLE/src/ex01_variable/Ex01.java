@@ -58,6 +58,13 @@ public class Ex01 {
 		System.out.println(discount);
 		System.out.println(pi);
 		
+
+		
+		
+	
+		
+		
+		
 	}
 
 }

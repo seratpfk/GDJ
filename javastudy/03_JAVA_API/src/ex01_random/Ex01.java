@@ -14,6 +14,7 @@ public class Ex01 {
 
 		// 1. 확률 처리하기
 		// 10% 확률로 "대박", 90% 확률로 "쪽박"
+		
 		if (Math.random() < 0.1) {
 			System.out.println("대박");
 		} else {
