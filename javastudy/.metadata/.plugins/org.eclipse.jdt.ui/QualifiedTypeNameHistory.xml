@@ -12,4 +12,12 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="sun.jvm.hotspot.gc.parallel.PSYoungGen"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="ex02_field.School"/>
+    <fullyQualifiedTypeName name="ex02_field.Student"/>
+    <fullyQualifiedTypeName name="ex03_method.Calculator"/>
+    <fullyQualifiedTypeName name="ex06_method_overload.CalculatorMain"/>
+    <fullyQualifiedTypeName name="ex06_method_overload.Caculator"/>
+    <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
+    <fullyQualifiedTypeName name="ex01_is_a.Student"/>
+    <fullyQualifiedTypeName name="ex04_has_a.Soldier"/>
 </qualifiedTypeNameHistroy>
