@@ -20,4 +20,7 @@
     <fullyQualifiedTypeName name="ex01_is_a.Student"/>
     <fullyQualifiedTypeName name="ex04_has_a.Soldier"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="ex06_constructor.Student"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="quiz04_cart.Customer"/>
 </qualifiedTypeNameHistroy>
