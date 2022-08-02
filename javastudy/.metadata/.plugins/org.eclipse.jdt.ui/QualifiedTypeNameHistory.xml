@@ -21,6 +21,7 @@
     <fullyQualifiedTypeName name="ex04_has_a.Soldier"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="ex06_constructor.Student"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="quiz04_cart.Customer"/>
+    <fullyQualifiedTypeName name="ex02_is_a.Car"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
