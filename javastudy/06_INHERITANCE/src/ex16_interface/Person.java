@@ -6,6 +6,11 @@ public class Person {
 		System.out.println(pet.getPetName() + "에게 " + food + "주기");
 	}
 	
+	public void walk(Walkable pet) {
+		System.out.println(((Pet) pet).getPetName() + "와 산책");
+	}
+	
+
 
 	
 	
