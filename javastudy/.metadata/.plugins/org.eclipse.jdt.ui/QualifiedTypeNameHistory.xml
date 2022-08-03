@@ -19,9 +19,16 @@
     <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
     <fullyQualifiedTypeName name="ex01_is_a.Student"/>
     <fullyQualifiedTypeName name="ex04_has_a.Soldier"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="ex06_constructor.Student"/>
     <fullyQualifiedTypeName name="quiz04_cart.Customer"/>
     <fullyQualifiedTypeName name="ex02_is_a.Car"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="sun.java2d.opengl.WGLSurfaceData.WGLVSyncOffScreenSurfaceData"/>
+    <fullyQualifiedTypeName name="library.Book"/>
+    <fullyQualifiedTypeName name="lombok.ToString"/>
 </qualifiedTypeNameHistroy>
