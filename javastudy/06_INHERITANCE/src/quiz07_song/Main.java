@@ -14,6 +14,7 @@ public class Main {
 		producer.produce(singer, song2);
 		
 		singer.info();
+		
 
 	}
 
