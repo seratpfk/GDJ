@@ -18,7 +18,12 @@ public class Bakery {
 
 
 	// 판매
-	public BreadAndChange sell(int custMoney) {
+	public BreadAndChange sell(int custMoney) throws RuntimeException {
+		
+		// 판매 불가
+		if(custMoney < price) {
+			throw new RuntimeException("판매 불가");
+		}
 		
 		// 판매할 수 있는 빵은 몇 개인가?
 		int sellCnt = custMoney / price;

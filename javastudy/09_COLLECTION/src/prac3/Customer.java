@@ -1,5 +1,7 @@
 package prac3;
 
+import javax.management.RuntimeErrorException;
+
 public class Customer {
 	
 	// 필드
@@ -13,7 +15,13 @@ public class Customer {
 	
 	// 구매 (구매 후 출력)
 	// Bakery에서 판매한 빵을 가질 수 있다.(Bakery의 sell() 메소드 사용)
-	public void buy(Bakery bakery, int buyMoney) {
+	public void buy(Bakery bakery, int buyMoney) throws RuntimeException {
+		
+		// 구매 불가
+		if(money - buyMoney < 0) {
+			throw new RuntimeException("구매 불가");
+		}
+		
 		
 		BreadAndChange bnc = bakery.sell(buyMoney);
 		
