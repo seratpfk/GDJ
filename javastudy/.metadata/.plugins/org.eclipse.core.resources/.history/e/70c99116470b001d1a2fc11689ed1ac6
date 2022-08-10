@@ -1,0 +1,34 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int total = 0;
+		int money = 30;
+		int serial = 0;
+		int goal = 100000;
+		
+		while(true) {
+			if(total >= goal) {
+				break;
+			}
+		}
+		total += money;
+				serial++;
+				System.out.println(serial + "회 모금액 " + money + " 현재" + total + "원");
+		
+		
+		
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

@@ -1,0 +1,26 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int month = 11;
+		int mod = month % 12;
+				
+		if(mod <= 2) {
+			System.out.println("겨울");
+		} else if(mod <= 5) {
+			System.out.println("봄");
+		} else if(mod <= 8) {
+			System.out.println("여름");
+		} else {
+			System.out.println("가을");
+		}
+		
+		
+			
+		
+		
+	}
+
+}

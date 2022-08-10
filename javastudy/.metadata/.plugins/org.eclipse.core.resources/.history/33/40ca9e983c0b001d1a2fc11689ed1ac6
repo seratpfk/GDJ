@@ -1,0 +1,27 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int floor = 7;
+		String manager;
+		
+		switch(floor) {
+		case 1: 
+		case 2: manager = "전지현"; break;
+		case 3: 
+		case 4: manager = "한지민"; break;
+		case 5: 
+		case 6: manager = "박은빈"; break;
+		default: manager = "박보검";
+		}
+		
+		System.out.println(floor + "총 관리자는 " + manager + "입니다.");
+		
+			
+		
+		
+	}
+
+}

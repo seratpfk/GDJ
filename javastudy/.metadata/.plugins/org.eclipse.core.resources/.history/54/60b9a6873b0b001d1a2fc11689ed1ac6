@@ -1,0 +1,34 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int day = 1;
+		int n = 1;
+		String weekName;
+		
+		day += n;
+		if(day % 7 == 0) {
+			weekName = "화";
+	    } else if(day % 7 == 1) {
+	    	weekName = "수";
+		} else if(day % 7 == 2) {
+			weekName = "목";
+		} else if(day % 7 == 3) {
+			weekName = "금";
+		} else if(day % 7 == 4) {	
+			weekName = "토";
+		} else {
+			weekName = "일";
+		}
+		
+		System.out.println(weekName + "요일");
+		
+		
+			
+		
+		
+	}
+
+}

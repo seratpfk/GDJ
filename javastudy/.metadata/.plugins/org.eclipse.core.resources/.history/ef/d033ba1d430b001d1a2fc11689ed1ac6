@@ -1,0 +1,29 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int point = 4;
+		String star = "";
+		
+		for (int n = 0; n < point; n++) {
+			star += "★";
+		}
+		System.out.println(star);
+		
+		
+		
+		
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

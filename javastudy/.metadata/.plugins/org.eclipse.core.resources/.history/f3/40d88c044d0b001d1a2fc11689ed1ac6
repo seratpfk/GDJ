@@ -1,0 +1,38 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		char code = "";
+		for(int n = 0; n <6; n++) {
+			if(Math.random() < 0.5) {
+				code += (char)((int)(Math.random() * 26) + 'A');
+			} else {
+				code += (char)((int)(Math.random() * 26) + 'a');
+			}
+		}
+		
+		System.out.println(code);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

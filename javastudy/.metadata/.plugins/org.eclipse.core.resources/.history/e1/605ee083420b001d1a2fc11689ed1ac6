@@ -1,0 +1,37 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int begin = 100;
+		int end = 1;
+		
+		if(begin>end) {
+			int temp;
+			temp = begin;
+			begin = end;
+			end = temp;
+		}
+		int sum = 0;
+		for(int n = begin; n <= end; n++) {
+			sum += n;
+		}
+		System.out.println(sum);
+		
+		
+		
+		
+		
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

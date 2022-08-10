@@ -1,0 +1,30 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int total = 0;
+		int n = 0;
+		
+		while(n < 100) {
+			n++;
+			if(n%3 == 0) {
+				continue;
+			}
+			total += n;
+		}
+		
+		
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

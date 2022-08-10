@@ -1,0 +1,27 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int month = 11;
+		
+		if(month < 0 || month > 12) {
+			System.out.println("잘못된 월");
+		} else if(month == 12 ||  month <= 2) {
+			System.out.println("겨울");
+		} else if(month <= 5) {
+			System.out.println("봄");
+		} else if(month <= 8) {
+			System.out.println("여름");
+		} else {
+			System.out.println("가을");
+		}
+		
+		
+			
+		
+		
+	}
+
+}

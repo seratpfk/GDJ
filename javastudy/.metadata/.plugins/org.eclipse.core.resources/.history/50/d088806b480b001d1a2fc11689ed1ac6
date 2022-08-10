@@ -1,0 +1,23 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		for(int dan = 1; dan <= 9; dan++) {
+			for(int n = 1; n <= 9; n++) {
+				System.out.println(dan + "x" + n + "=" + (dan * n));
+			}
+		}
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

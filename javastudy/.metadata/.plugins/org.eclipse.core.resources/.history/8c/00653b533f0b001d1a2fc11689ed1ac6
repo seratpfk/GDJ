@@ -1,0 +1,24 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int level = 2;
+		String right="";
+		
+		switch(level) {
+		case 1: right += "쓰기";
+		case 2: right += "실행";
+		case 3: right += "읽기"; break;
+		default: right += "없음";
+		}
+		
+		System.out.println(right);
+		
+			
+		
+		
+	}
+
+}

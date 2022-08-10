@@ -1,0 +1,36 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		if(Math.random() <=) {
+			System.out.println("대박");
+		} else {
+			System.out.println("쪽박");
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		}
+	
+	
+		
+			
+		
+		
+	}
+
+

@@ -1,0 +1,21 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int n = 5;
+		
+		switch(n%2) {
+		case 0: System.out.println("짝수"); break;
+		default: System.out.println("홀수"); 
+		}
+		
+		
+		
+			
+		
+		
+	}
+
+}

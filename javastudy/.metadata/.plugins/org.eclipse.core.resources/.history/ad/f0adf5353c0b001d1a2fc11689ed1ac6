@@ -1,0 +1,22 @@
+package study01;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		
+		int step = 3;
+		
+		switch(step) {
+		case 1: System.out.println("1단계"); break;
+		case 2: System.out.println("2단계"); break;
+		case 3: System.out.println("3단계"); break;
+		default: System.out.println("잘못된 단계");
+		}
+		
+		
+			
+		
+		
+	}
+
+}
