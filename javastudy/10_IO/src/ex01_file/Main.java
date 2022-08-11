@@ -95,7 +95,7 @@ public class Main {
 	
 	public static void q1() {
 		
-		File dir = new File("D:\\GDJ54");
+		File dir = new File("C:\\GDJ");
 		File[] list = dir.listFiles();
 		
 		int dirCnt = 0;

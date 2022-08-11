@@ -1,5 +1,12 @@
 package ex02_writer;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -61,12 +68,77 @@ public class JSONWriter {
 		System.out.println(height);
 		
 	}
+	
+	
+	public static void m4() {
+		
+		String str = "[{\"name\":\"제임스\",\"age\":30},{\"name\":\"에밀리\",\"age\":40}]";
+		
+		JSONArray arr = new JSONArray(str);
+		
+		// 일반 for문
+		for(int i = 0, length = arr.length(); i < length; i++) {
+			JSONObject obj = arr.getJSONObject(i);
+			String name = obj.getString("name");
+			int age = obj.getInt("age");
+			System.out.println(name + "," + age);
+		}
+		
+		// 향상 for문 : get() 메소드로 동작. get() 메소드는 Object를 반환.
+		for(Object o : arr) {
+			JSONObject obj = (JSONObject)o;
+			String name = obj.getString("name");
+			int age = obj.getInt("age");
+			System.out.println(name + "," + age);
+		}
+
+	}
+	
 
 	public static void main(String[] args) {
 		
-		m1();
-		m2();
-		m3();
+		//m1();
+		//m2();
+		//m3();
+		//m4();
+		
+		List<String> product1 = Arrays.asList("100", "새우깡", "1500");
+		List<String> product2 = Arrays.asList("101", "양파링", "2000");
+		List<String> product3 = Arrays.asList("102", "홈런볼", "3000");
+		
+		List<List<String>> list = Arrays.asList(product1, product2, product3);
+		
+		// list를 json String으로 만들어서
+		// c:\\storage\\product.json 파일에 write()
+		
+		JSONArray arr = new JSONArray();
+		
+		for(List<String> line : list) {
+			JSONObject obj = new JSONObject();
+			obj.put("number", line.get(0));
+			obj.put("name", line.get(1));
+			obj.put("price", line.get(2));
+			arr.put(obj);
+		}
+
+		File file = new File("c:\\storage", "product.json");
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		try {
+			fw = new FileWriter(file);
+			bw = new BufferedWriter(fw);
+			bw.write(arr.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(bw != null) {
+					bw.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
