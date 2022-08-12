@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.util.List;
+
+import ex04_outputstream.User;
 
 public class Main {
 	
@@ -120,11 +124,40 @@ public class Main {
 	
 	public static void m4() {
 		
+		// 객체를 그대로 입력 받는 ObjectInputStream
+		
+		File file = new File("C:\\storage", "b4.dat");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		
+		try {
+			
+			fis = new FileInputStream(file);
+			ois = new ObjectInputStream(fis);
+			
+			List<User> users = (List<User>)ois.readObject();
+			User user = (User)ois.readObject();
+			
+			for(User u : users) {
+				System.out.println(u);
+			}
+			System.out.println(user);
+		} catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ois != null) ois.close();
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public static void main(String[] args) {
 		
-		m3();
+		m4();
 
 	}
 
