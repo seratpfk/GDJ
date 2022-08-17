@@ -16,7 +16,7 @@ public class WashRobot extends Robot implements Runnable {
 	
 	@Override
 	public void run() {
-		System.out.println(name + "빨래중");
+		System.out.println(name + " 빨래중");
 	}
 
 }
