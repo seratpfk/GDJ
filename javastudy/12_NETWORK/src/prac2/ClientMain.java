@@ -19,12 +19,12 @@ public class ClientMain {
 			socket = new Socket();
 			socket.connect(new InetSocketAddress("localhost", 9090));
 			
-			sc = new Scanner(System.in);
-			
-			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			
 			Client client = new Client(socket);
 			client.start();
+			
+			sc = new Scanner(System.in);
+			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			
 			
 			while(true) {
 				System.out.println(">>> ");

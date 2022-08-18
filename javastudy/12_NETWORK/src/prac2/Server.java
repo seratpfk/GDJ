@@ -27,7 +27,7 @@ public class Server extends Thread {
 	
 	
 	public void sendMessage(String message) throws IOException {
-		out.write(message);
+		out.write(message + "\n");
 		out.flush();
 	}
 	
