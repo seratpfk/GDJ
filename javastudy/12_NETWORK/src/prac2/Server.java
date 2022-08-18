@@ -25,7 +25,6 @@ public class Server extends Thread {
 		}
 	}
 	
-	
 	public void sendMessage(String message) throws IOException {
 		out.write(message + "\n");
 		out.flush();
@@ -34,28 +33,31 @@ public class Server extends Thread {
 	@Override
 	public void run() {
 		
+		InetSocketAddress address = null;
+
 		try {
-			
-			InetSocketAddress address = null;
-			String message = null;
+
 			while(true) {
-				message = in.readLine();
-				if(message.equalsIgnoreCase("exit")) {  // 채팅창에 exit 입력하면 채팅 종료
+				String message = in.readLine();
+				if(message == null || message.equalsIgnoreCase("exit")) {  // 채팅창에 exit 입력하면 채팅 종료
 					break;
 				}
 				// 모든 클라이언트에게 메시지 출력
 				address = (InetSocketAddress)client.getRemoteSocketAddress();
-				// address.getHostName() + "의 메시지 : " + message
-				ServerMain.sendMessage(address.getHostName() + "의 메시지 : " + message);
-			}
+				for(Server server : ServerMain.servers) {
+					server.sendMessage("[" + address.getHostName() + "] " + message);
+				}
+				
+			}  // while(true)
 			
-			// List<Server> servers에서 등록된 서버 제거
-			ServerMain.servers.remove(this);
-			System.out.println(address.getHostName() + "채팅 종료");
-
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		// List<Server> servers에서 등록된 서버 제거
+		System.out.println(address.getHostName() + " 채팅 종료");
+		ServerMain.servers.remove(this);
+		System.out.println("현재 접속 중인 클라이언트 " + ServerMain.servers.size() + "명");
 		
 	}
 	

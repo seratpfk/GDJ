@@ -13,7 +13,8 @@ public class ClientMain {
 		
 		Socket socket = null;
 		Scanner sc = null;
-		BufferedWriter out = null;		
+		BufferedWriter out = null;
+		
 		try {
 			
 			socket = new Socket();
@@ -21,35 +22,26 @@ public class ClientMain {
 			
 			Client client = new Client(socket);
 			client.start();
-			
+
 			sc = new Scanner(System.in);
 			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			
-			
 			while(true) {
-				System.out.println(">>> ");
-				String message = sc.nextLine();
-				if(message.equalsIgnoreCase("exit")) {
-					break;
-				}
-				out.write(message);
+				String message = sc.nextLine();  // 채팅내용입력
+				out.write(message + "\n");  // Client.java의 BufferedReader in으로 전달
 				out.flush();
 			}
+			
 		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				
 				if(out != null) {
 					out.close();
 				}
-				if(socket.isClosed() == false) {
-					socket.close();
-				}
-		
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
 		}	
 	}
 }
