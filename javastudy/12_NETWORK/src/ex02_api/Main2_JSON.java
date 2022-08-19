@@ -12,9 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.XML;
 
 public class Main2_JSON {
 	
@@ -313,10 +316,91 @@ public static void m6() {
 	JSONObject obj = new JSONObject(m5());
 	JSONObject header = obj.getJSONObject("header");
 	JSONArray columns = header.getJSONArray("columns");
+	
+	
+	JSONObject body = obj.getJSONObject("body");
+	JSONArray items = body.getJSONArray("items");
+	JSONObject item = items.getJSONObject(0);
+	
+	
+	String[] p = {"trarNo", "mainTrarNm", "ctprvnCd", "ctprvnNm", "signguCd", "signguNm", "trarArea", "coordNum", "coords", "stdrDt"};
+	
+	Map<String, Object> map = new HashMap<String, Object>();
 	for(int i = 0; i < columns.length(); i++) {
-		System.out.println(columns.getString(i));
+		map.put(columns.getString(i), item.get(p[i]));
 	}
+	
+	System.out.println(map);
+	
+	
 }
+
+
+public static String m7() {
+	
+	// 기상청 RSS
+	
+	// 제주특별자치도 서귀포시 중문동
+	String apiURL = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=5013061000";
+	
+	// 접속
+	URL url = null;
+	HttpURLConnection con = null;
+	try {
+		url = new URL(apiURL);
+		con = (HttpURLConnection)url.openConnection();
+	} catch(IOException e) {
+		System.out.println("접속 실패");
+	}
+	
+	// 응답 스트림 생성 및 응답 데이터 받기
+	BufferedReader reader = null;
+	StringBuilder sb = new StringBuilder();
+	try {
+		if(con.getResponseCode() == HttpURLConnection.HTTP_OK) {
+			reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		} else {
+			reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+		}
+		String line = null;
+		while((line = reader.readLine()) != null) {
+			sb.append(line);
+		}
+	} catch(IOException e) {
+		System.out.println("응답 실패");
+	}
+	
+	// XML 파일 생성
+	File file = new File("C:\\storage", "api4.xml");
+	try {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		writer.write(sb.toString());
+		writer.close();
+	} catch(IOException e) {
+		System.out.println("파일 생성 실패");
+	}
+	
+	return sb.toString();
+	
+}
+
+	public static void m8() {
+		
+		// XML문서를 JSONObject로 변환
+		JSONObject obj = XML.toJSONObject(m7());
+
+		JSONArray dataList = obj.getJSONObject("rss")
+								.getJSONObject("channel")
+								.getJSONObject("item")
+								.getJSONObject("description")
+								.getJSONObject("body")
+								.getJSONArray("data");
+						
+		for(int i = 0; i < dataList.length(); i++) {
+			JSONObject weather = dataList.getJSONObject(i);
+			System.out.println(weather.getInt("hour") + "시 : " + weather.getInt("temp") + "도, " + weather.getString("wfKor"));
+		}
+	}
 
 	public static void main(String[] args) {
 		
@@ -324,8 +408,11 @@ public static void m6() {
 		//m2();
 		//m3();
 		//m4();
-		m5();
-		m6();
+		//m5();
+		//m6();
+		//m7();
+		m8();
+		
 
 	}
 
