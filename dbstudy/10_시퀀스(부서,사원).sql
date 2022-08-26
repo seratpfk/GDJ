@@ -191,18 +191,3 @@ UPDATE EMPLOYEE
  WHERE POSITION = '과장';
 
 
-
--- 테이블 삭제
-
--- 1. 부서번호가 4인 부서를 삭제
--- 부서번호가 4인 행(Row)을 참조하는 사원이 없으므로 정상 삭제
-DELETE
-  FROM DEPARTMENT
- WHERE DEPT_NO = 4;
-
--- 2. 부서번호가 1인 부서를 삭제
--- 외래키 옵션으로 ON DELETE SET NULL 처리를 하였기 때문에
--- 부서번호가 1인 행(Row)을 소속부서가 NULL 값으로 함께 변경
-DELETE
-  FROM DEPARTMENT
- WHERE DEPT_NO = 1;
