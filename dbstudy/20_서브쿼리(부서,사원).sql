@@ -128,15 +128,58 @@ SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY
                     
 -- 6. 부서번호가 2인 부서에 근무하는 사원들의 직급과 일치하는 직급을 가진 사원 조회하기
  SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY 
-  FROM EMPLOYEE
- WHERE SALARY = (SELECT MAX(SALARY)
-                    FROM EMPLOYEE);
+   FROM EMPLOYEE
+  WHERE POSITION IN (SELECT POSITION  -- 다중 행 서브쿼리의 동등 비교는 IN 연산으로 수행해야 함
+                    FROM EMPLOYEE
+                   WHERE DEPART = 2);  -- DEPART가 PK/UNIQUE가 아니기 때문에 다중 행 서브쿼리
+                   
+-- TIP) 단일 행/다중 행 상관 없이 동등비교는 IN 연산으로 수행 가능
+
+-- 7. 부서명이 '영업부'인 부서에 근무하는 사원 조회하기
+ SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY 
+   FROM EMPLOYEE
+  WHERE DEPART IN(SELECT DEPT_NO
+                    FROM DEPARTMENT
+                   WHERE DEPT_NAME = '영업부');  -- DEPART_NAME이 PK/UNIQUE가 아니기 때문에 다중 행 서브쿼리
+
+ SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY 
+   FROM DEPARTMENT D INNER JOIN EMPLOYEE E
+     ON D.DEPT_NO = E.DEPART
+  WHERE D.DEPT_NAME = '영업부';
+  
+-- 8. 직급이 '과장'인 사원들이 근무하는 부서 조회하기
+SELECT DEPT_NO, DEPT_NAME, LOCATION 
+  FROM DEPARTMENT
+ WHERE DEPT_NO IN(SELECT DEPART
+                    FROM EMPLOYEE
+                   WHERE POSITION = '과장');
+                   
+SELECT DEPT_NO, DEPT_NAME, LOCATION 
+  FROM DEPARTMENT D INNER JOIN EMPLOYEE E
+    ON D.DEPT_NO = E.DEPART
+ WHERE E.POSITION = '과장';
  
+-- 9. 부서번호가 1인 부서에 근무하는 사원들의 급여보다 더 많은 급여를 받는 사원 조회하기
+-- 어떤 급여(2000000, 5000000)이든 하나의 급여보다 많이 받으면 조회하기
+ SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY 
+   FROM EMPLOYEE
+  WHERE SALARY > (SELECT SALARY
+                    FROM EMPLOYEE
+                   WHERE DEPART = 1);  -- DEPART가 PK/UNIQUE가 아니기 때문에 다중 행 서브쿼리
+                   
+-- WHERE SALARY > ANY(2000000, 5000000)
+-- SALARY가 2000000보다 크거나, 5000000보다 크면 됨(OR 개념)
+
+-- 10. 부서번호가 1인 부서에 근무하는 사원들의 급여보다 더 많은 급여를 받는 사원 조회하기
+-- 모든 급여(2000000, 5000000)와 비교해서 많이 받으면 조회하기
+ SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY 
+   FROM EMPLOYEE
+  WHERE SALARY > ALL(SELECT SALARY
+                    FROM EMPLOYEE
+                   WHERE DEPART = 1);  -- DEPART가 PK/UNIQUE가 아니기 때문에 다중 행 서브쿼리
  
- 
- 
- 
- 
+ -- WHERE SALARY > ALL(2000000, 5000000)
+ -- SALARY가 2000000보다 크고, 5000000보다 크면 됨(AND 개념)
  
  
  
