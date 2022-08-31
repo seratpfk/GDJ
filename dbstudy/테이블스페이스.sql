@@ -1,0 +1,23 @@
+-- 테이블 스페이스
+-- dbf : 테이블 스페이스 확장자
+CREATE TABLESPACE TEMP_SPACE 
+DATAFILE 'C:/temp/temp.dbf'
+SIZE 1M; -- 용량 1MB면 1M 입력
+
+-- 테이블 스페이스 삭제
+
+-- 1. 테이블 스페이스 삭제
+DROP TABLESPACE TEMP_SPACE;
+
+-- 2. 컨텐츠 포함 테이블 스페이스 삭제
+DROP TABLESPACE TEMP_SPACE
+    INCLUDING CONTENTS; 
+
+-- 3. 데이타파일 포함 테이블 스페이스 삭제
+DROP TABLESPACE TEMP_SPACE
+    INCLUDING CONTENTS AND DATAFILES; 
+
+-- 4. 다 지우기
+DROP TABLESPACE TEMP_SPACE
+    INCLUDING CONTENTS AND DATAFILES
+        CASCADE CONSTRAINTS;
