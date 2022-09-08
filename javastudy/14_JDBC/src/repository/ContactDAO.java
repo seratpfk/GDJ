@@ -7,9 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Properties;
 
+import domain.ContactDTO;
+
+
 public class ContactDAO {
 	
-	/*****************select*********************/
+	/***************** Singleton *********************/
 	
 	// DAO는 하나의 객체만 생성할 수 있도록
 	// Singleton Pattern으로 생성
@@ -35,9 +38,11 @@ public class ContactDAO {
 	/***************** Field *********************/
 	
 	// 데이터베이스에 접근할 때 사용하는 공통 요소
-	private Connection con;
-	private PreparedStatement ps;
-	private ResultSet rs;
+	private Connection con; // DB접속
+	private PreparedStatement ps; // 쿼리문 실행
+	private ResultSet rs; // SELECT 결과
+	private String sql; // 쿼리문
+	private int result; // INSERT, UPDATE, DELETE 결과
 	
 	
 	/***************** Method *********************/
@@ -74,19 +79,42 @@ public class ContactDAO {
 			e.printStackTrace();
 		}
 	}
-		public static void main(String[] args) {
-			
-			try {
-				ContactDAO dao = ContactDAO.getInstance();
-				Connection con = dao.getConnection();
-				
-				System.out.println("접속 성공");
-				
-			} catch(Exception e) {
-				System.out.println("오류");
-			}
+
+	
+	// 연락처 추가 메소드
+	// 1. 매개변수 : ContactDTO
+	// 2. 반환값   : 0 또는 1
+	public int insertContact(ContactDTO contact) {
+		
+		try {
+			con = getConnection();
+			sql = "INSERT INTO CONTACT VALUES(CONTACT_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, contact.getName());
+			ps.setString(2, contact.getTel());
+			ps.setString(3, contact.getEmail());
+			result = ps.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return result;
 		
 	}
-}
+		
+	// 연락처 수정 메소드
+	
+	// 연락처 삭제 메소드
+	
+	// 연락처 조회 메소드
+	
+	// 연락처 목록 메소드
+	
+	
+		
+	}
+
 
 
