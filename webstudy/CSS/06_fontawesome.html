@@ -8,26 +8,30 @@
 </head>
 <body>
 
-<!-- 
-    CDN
+<!--
+        CDN
+        1. Content Delivery Network
+        2. 웹 상에서 제공받는 각종 콘텐츠
+        3. CDN 제공 사이트 - https://cdnjs.com/
+    -->
 
-    1. Content Delivery Network
-    2. 웹 상에서 제공받는 각종 콘텐츠
-    3. CDN 제공 사이트 - http://cdnjs.com/
- -->
+    <!--
+        fontawesome
+        1. 무료로 아이콘을 제공하는 사이트(https://fontawesome.com/)
+        2. 개인 이메일을 제공하고 CDN 주소를 받거나,
+           CDN 제공 사이트를 통해서 CDN 주소를 받아야 함
+        3. 무료 버전과 Pro 버전(유료 버전)이 있음
+    -->
 
- <!-- 
-    fontawesome
-
-    1. 무료로 아이콘을 제공하는 사이트
-    2. 개인 이메일을 제공하고 CDN 주소를 받거나,
-        CDN 제공 사이트를 통해서 CDN 주소를 받아야 함
-    3. 무료 버전과 Pro 버전(유료 버전)이 있음
-  -->
-
-  <!-- CDN 제공 사이트 - https://cdnjs.com/에서 fontawesome 조회 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <!-- CDN 제공 사이트 - https://cdnjs.com/에서 fontawesome 조회 -->
+    <!--
+        1. <link> 태그
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    -->
+    <!-- 2. @import url() -->
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+    </style>
 </head>
 <body>
     
@@ -58,6 +62,5 @@
         <i class="fa-solid fa-house fa-9x"></i>
         <i class="fa-solid fa-house fa-10x"></i>
     </p>
-
 </body>
 </html>
