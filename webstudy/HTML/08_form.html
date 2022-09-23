@@ -195,27 +195,27 @@
             <button>전송</button>
          </form>
 
-         <!-- 
+         <!--
             10. <label> 태그
-
-            1) 특정 입력 요소에 붙이는 이름표
-            2) <label> 태그를 선택하는 것으로 입력 요소를 선택할 수 있음
-            3) 이름표를 붙일 입력 요소의 id 속성
-          -->
-
-          <form>
-            <fieldset>
-                <legend>성별</legend>
-                <input type="radio" id="male" value="1">
-                <label for="male">남</label>
-                <input type="radio" id="female" value="2">
-                <label for="female">여</label>
-                <input type="radio" name="none" value="3">
-                <label for="none">선택안함</label>
-                &nbsp;&nbsp;&nbsp;
-                <button>전송</button>
-            </fieldset>
-        </form>
+              1) 특정 입력 요소에 붙이는 이름표
+              2) <label> 태그를 선택하는 것으로 입력 요소를 선택할 수 있음
+              3) <label> 태그의 for 속성으로 입력 요소의 id 속성을 연결
+        -->
+    <form>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" id="male" name="gender" value="1">
+            <label for="male">남</label>
+            &nbsp;&nbsp;&nbsp;
+            <input type="radio" id="female" name="gender" value="2">
+            <label for="female">여</label>
+            &nbsp;&nbsp;&nbsp;
+            <input type="radio" id="none" name="gender" value="3">
+            <label for="none">선택안함</label>
+            &nbsp;&nbsp;&nbsp;
+            <button>전송</button>
+        </fieldset>
+    </form>
 
         <!-- 네이버 검색창 -->
         <form action="https://search.naver.com/search.naver"
@@ -265,6 +265,7 @@
             </form>
         
             <h3>연습문제-3</h3>
+            /* action에 정보 저장 */
             <form action="01_overview.html" method="post">
                 <table>
                     <thead>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+        .box1 {
+            width: 200px;
+            height: 50px;
+            border: 1px solid gray;
+            /* overflow: scroll 내용물이 영역을 벗어나면 스크롤 바를 생성 */
+            overflow: scroll;
+        }
+        .box2 {
+            width: 200px;
+            height: 50px;
+            border: 1px solid gray;
+            /* overflow-x: scroll 가로 방향의 스크롤 바를 생성 */
+            overflow-x: scroll;
+        }
+        .box3 {
+            width: 200px;
+            height: 50px;
+            border: 1px solid gray;
+            /* overflow: hidden 영역을 벗어난 내용물을 모두 숨김 */
+            overflow: hidden;
+        }
+    </style>
+    <div class="box1">
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut nulla vitae ligula malesuada auctor ut nec magna. Nunc consequat mi quis pharetra viverra. Curabitur vehicula nibh non ex semper eleifend. Curabitur dapibus sapien vel ligula aliquam, non congue arcu aliquam. Duis diam nisi, placerat nec eleifend ac, pretium quis dui. Curabitur non felis id nunc vehicula hendrerit. Nunc sit amet dui sed felis ultrices mattis. Vivamus pellentesque, diam eget posuere ullamcorper, orci tellus euismod ipsum, a aliquam dolor tortor vitae nisi. Nullam vehicula, metus a facilisis ultrices, dolor risus interdum lacus, vel congue purus enim nec justo. Praesent ultrices nunc a neque vestibulum, ac mollis risus feugiat. Donec ligula lectus, malesuada non sagittis eu, tincidunt a enim. Nulla vitae est odio. Nulla facilisi.
+    </div>
+
+    <hr>
+
+    <div class="box2">
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut nulla vitae ligula malesuada auctor ut nec magna. Nunc consequat mi quis pharetra viverra. Curabitur vehicula nibh non ex semper eleifend. Curabitur dapibus sapien vel ligula aliquam, non congue arcu aliquam. Duis diam nisi, placerat nec eleifend ac, pretium quis dui. Curabitur non felis id nunc vehicula hendrerit. Nunc sit amet dui sed felis ultrices mattis. Vivamus pellentesque, diam eget posuere ullamcorper, orci tellus euismod ipsum, a aliquam dolor tortor vitae nisi. Nullam vehicula, metus a facilisis ultrices, dolor risus interdum lacus, vel congue purus enim nec justo. Praesent ultrices nunc a neque vestibulum, ac mollis risus feugiat. Donec ligula lectus, malesuada non sagittis eu, tincidunt a enim. Nulla vitae est odio. Nulla facilisi.
+    </div>
+
+    <hr>
+
+    <div class="box3">
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut nulla vitae ligula malesuada auctor ut nec magna. Nunc consequat mi quis pharetra viverra. Curabitur vehicula nibh non ex semper eleifend. Curabitur dapibus sapien vel ligula aliquam, non congue arcu aliquam. Duis diam nisi, placerat nec eleifend ac, pretium quis dui. Curabitur non felis id nunc vehicula hendrerit. Nunc sit amet dui sed felis ultrices mattis. Vivamus pellentesque, diam eget posuere ullamcorper, orci tellus euismod ipsum, a aliquam dolor tortor vitae nisi. Nullam vehicula, metus a facilisis ultrices, dolor risus interdum lacus, vel congue purus enim nec justo. Praesent ultrices nunc a neque vestibulum, ac mollis risus feugiat. Donec ligula lectus, malesuada non sagittis eu, tincidunt a enim. Nulla vitae est odio. Nulla facilisi.
+    </div>
+
+    <hr>
+
+    <style>
+        .box4 {
+            width: 200px;
+            height: 50px;
+            border: 1px solid gray;
+        }
+        .box4 > div {
+            width: 150px;
+            height: 50px;
+            border: 1px solid gray;
+        }
+    </style>
+    <div class="box4">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+    </div>
+
+</body>
+</html>
