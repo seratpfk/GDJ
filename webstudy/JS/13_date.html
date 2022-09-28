@@ -43,5 +43,29 @@
         }
         console.log(now.getDayName());
     </script>
+
+    <div>
+        <h1>
+            <span id="hour"></span> : 
+            <span id="minute"></span> :
+            <span id="second"></span>
+        </h1>
+    </div>
+    <script>
+
+        // 문제. 초 시계
+        setInterval(function(){
+            var now = new Date();
+            document.getElementById('hour').textContent = appendZero(now.getHours());
+            document.getElementById('minute').textContent=appendZero(now.getMinutes());
+            document.getElementById('second').textContent=appendZero(now.getSeconds());
+        }, 1000);
+
+        // 0 ~ 9 => 00 ~ 09
+        function appendZero(n) {
+            return (n <= 9) ? '0' + n : '' + n;
+        }
+
+    </script>
 </body>
 </html>
