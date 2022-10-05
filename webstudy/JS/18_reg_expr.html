@@ -56,6 +56,7 @@
 
     <!-- 1. 핸드폰 번호 검사 -->
     <div>
+        <h3>핸드폰 번호 검사</h3>
         <input type="text" id="tel">
         <span id="msg_tel"></span>
     </div>
@@ -74,6 +75,7 @@
 
     <!-- 2. 아이디 검사 -->
     <div>
+        <h3>아이디 검사</h3>
         <input type="text" id="user_id">
         <span id="msg_id"></span>
     </div>
@@ -93,6 +95,7 @@
 
     <!-- 3. 비밀번호 검사 -->
     <div>
+        <h3>비밀번호 검사</h3>
         <input type="password" id="pwd">
         <span id="msg_pwd"></span>
     </div>
@@ -119,16 +122,17 @@
     
     <!-- 4. 이메일 검사 -->
     <div>
+        <h3>이메일 검사</h3>
         <input type="text" id="email">
-        <button id="btn"></button>
+        <button id="btn">검사</button>
         <span id="msg_email"></span>
     </div>
     <script>
         var email = document.getElementById('email');
         var btn = document.getElementById('btn');
-        var msg_email = document.getElementById('msg_email');
+        var msgEmail = document.getElementById('msg_email');
         btn.onclick = function(event) {
-            var regEmail = /[0-9a-zA-Z-_]+@[0-9a-zA-Z]{2,}(/.[a-zA-Z]{2,6}){1,2}$/;
+            var regEmail = /[0-9a-zA-Z-_]+@[0-9a-zA-Z]{2,}(\.[a-zA-Z]{2,6}){1,2}$/;
             if(regEmail.test(email.value)) {
                 msgEmail.textContent = '올바른 이메일 형식입니다.';
             } else {
