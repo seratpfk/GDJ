@@ -177,16 +177,20 @@
         console.log($('#box7 :password')); // input type=password
         console.log($('#box7 :radio')); // input type=radio
         // 상태
-        console.log($('#box7 : focus')); // 포커스를 가진 요소 (이벤트 처리 시 확인 가능)
-        console.log($('#box7 : radio:checked')); // input type=radio 중 체크된 요소
-        console.log($('#box7 : selected')); // 선택된 요소
+        console.log($('#box7 :focus')); // 포커스를 가진 요소 (이벤트 처리 시 확인 가능)
+        $('#box7 :text').focus();
+        if($('#box7 :text').is(':focus')){
+            $('#box7 :text').css('background', 'gray');
+        }
+        console.log($('#box7 :radio:checked')); // input type=radio 중 체크된 요소
+        console.log($('#box7 :selected')); // 선택된 요소
         // value 속성
-        console.log($('#box7: text').val());
-        console.log($('#box7: password').val());
-        console.log($('#box7: radio').val());
-        console.log($('#box7: focus').val());
-        console.log($('#box7: radio:checked').val());
-        console.log($('#box7: selected').val());
+        console.log($('#box7 :text').val());
+        console.log($('#box7 :password').val());
+        console.log($('#box7 :radio').val());
+        console.log($('#box7 :focus').val());
+        console.log($('#box7 :radio:checked').val());
+        console.log($('#box7 :selected').val());
     </script>
 
     <div id="box8">
