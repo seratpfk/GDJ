@@ -8,21 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*
-   Servlet
-  
-   1. 웹 화면을 만드는 자바 클래스
-   2. JSP/Servlet Container(Tomcat)에 의해서 실행
-   3. 서블릿을 실행하면 웹 브라우저가 실행됨
-   4. URL
-   		프로토콜://호스트:포트번호/컨텍스트패스/URLMapping // 서로 다른 서브밋이 같은 URLMapping을 사용할 수 없음
-   		http://localhost:9090/01_Servlet/HelloServlet // 실행하면 이 주소가 나옴
-   		
- */
 
-/**
- * Servlet implementation class HelloServlet
- */
 @WebServlet("/HelloServlet") // URL Mapping
 public class HelloServlet extends HttpServlet { // Servlet은 HttpServlet을 상속 받으면 된다.
 	
@@ -89,7 +75,7 @@ public class HelloServlet extends HttpServlet { // Servlet은 HttpServlet을 상
 
 	/*
 	 * 5. doPost
-	 * 		1) POST 방식의 요청을 처리
+	 * 		1) POST 방식의 요청을 처리 // 아이디, 비밀번호 등을 보안처리
 	 * 		2) 요청 메소드가 POST인 경우
 	 * 			(1) $.ajax({
 	 * 					'type': 'POST',
