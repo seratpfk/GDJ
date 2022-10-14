@@ -1,5 +1,6 @@
-package ex04;
+package ex10_up_down;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,25 +11,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ForwardServlet2")
-public class ForwardServlet2 extends HttpServlet {
+@WebServlet("/FileListServlet")
+public class FileListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 요청 파라미터
-		String a = request.getParameter("a");
+		// upload 디렉토리의 경로
+		String realPath = getServletContext().getRealPath("upload");
+		
+		// upload 디렉토리에 저장된 파일 목록 가져오기
+		File dir = new File(realPath);
+		File[] files = dir.listFiles();
 		
 		// 응답
 		response.setContentType("text/html; charset=UTF-8");
-		
 		PrintWriter out = response.getWriter();
-		out.println("<h1>파라미터 a = " + a + "</h1>");
+		for(int i = 0; i < files.length; i++) {
+			out.println("<div><a href=\"/01_Servlet/DownloadServlet?filename=" + files[i].getName() + "\">" + files[i].getName() + "</a></div>");
+		}
 		out.close();
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
