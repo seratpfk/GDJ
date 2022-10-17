@@ -14,6 +14,7 @@
 
 	<h3><a href="${contextPath }/today.do">오늘은 며칠입니까?</a></h3>
 	<h3><a href="${contextPath }/now.do">지금은 몇시입니까?</a></h3>
+	<h3><a href="${contextPath }/input.do">입력화면으로 이동하기</a></h3>
 
 </body>
 </html>
