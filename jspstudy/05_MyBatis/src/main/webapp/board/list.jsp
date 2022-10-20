@@ -8,19 +8,45 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <style>
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		color: #333;
+	}
+	a {
+		text-decoration: none;
+	}
 	h1 {
+		margin-top: 30px;
 		text-align: center;
+	}
+	.btn_write {
+		width: 100px;
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		margin: 40px auto 20px;
+		background-color: teal;
+		color: #fff;
+		cursor: pointer;
+	}
+	.btn_write:hover {
+		background-color: orange;
 	}
 	ul {
 		list-style: none;
 		display: flex;
-		justify-content: space-between;
+		flex-wrap: wrap;
 		width: 630px;
 		margin: 30px auto;
 	}
 	ul > li {
 		width: 200px;
 		height: 200px;
+		padding-top: 10px;
+		margin-top: 10px;
+		margin-right: 10px;
 		text-align: center;
 		border: 1px solid gray;
 		border-radius: 5px;
@@ -47,7 +73,7 @@
 <body>
 
    <h1>게시글 목록 보기</h1>
-	<div id="btn_write">추가</div>
+	<div class="btn_write" id="btn_write">추가</div>
 	<ul>
 		<c:forEach items="${boards}" var="b">
 			<li>
