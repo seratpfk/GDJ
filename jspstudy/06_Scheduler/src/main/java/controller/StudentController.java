@@ -12,16 +12,17 @@ import common.ActionForward;
 import service.StudentAddService;
 import service.StudentFindService;
 import service.StudentListService;
+import service.StudentRemoveService;
 import service.StudentService;
 
-
 @WebServlet("*.do")
+
 public class StudentController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
- 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		// 요청 / 응답 인코딩
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -48,6 +49,10 @@ public class StudentController extends HttpServlet {
 		case "/student/find.do":
 			service = new StudentFindService();
 			break;
+		case "/student/remove.do":
+			service = new StudentRemoveService();
+			break;
+			
 		case "/student/write.do":
 			af = new ActionForward("/student/write.jsp", false);
 			break;
@@ -70,10 +75,8 @@ public class StudentController extends HttpServlet {
 				request.getRequestDispatcher(af.getView()).forward(request, response);
 			}
 		}
+		
 	}
-	
-	
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

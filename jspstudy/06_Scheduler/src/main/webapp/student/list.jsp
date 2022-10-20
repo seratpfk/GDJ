@@ -28,7 +28,11 @@
 				return;
 			}
 			location.href = '${contextPath}/student/find.do?begin=' + begin + '&end=' + end;
-		})
+		});
+		
+		$('#btn_list').click(function(event){
+			location.href = '${contextPath}/student/list.do';
+		});
 		
 	});
 </script>
@@ -47,6 +51,7 @@
 			~
 			<input type="text" name="end" id="end" size="4" placeholder="end">
 			<input type="button" value="조회" class="btn_primary" id="btn_find">
+			<input type="button" value="전체조회" class="btn_primary btn_list" id="btn_list">
 		</div>
 		<div class="main_area">
 			<table>
@@ -81,7 +86,14 @@
 								<td>${s.grade}</td>
 								<td>
 									<input type="button" value="상세" class="btn_primary" id="btn_detail">
-									<input type="button" value="삭제" class="btn_primary" id="btn_remove">
+									<input type="button" value="삭제" class="btn_primary btn_remove" onclick="fn_remove(${s.stuNo})">
+									<script>
+										function fn_remove(stuNo){
+											if(confirm('학생 정보를 삭제할까요?')){
+												location.href = '${contextPath}/student/remove.do?stuNo=' + stuNo;
+											}
+										}
+									</script>
 								</td>
 							</tr>
 						</c:forEach>
@@ -91,8 +103,7 @@
 					<tr>
 						<td colspan="5">전체평균</td>
 						<td><fmt:formatNumber value="${average}" pattern="0.00" /></td>
-						<td></td>
-						<td></td>
+						<td colspan="2"></td>
 					</tr>
 				</tfoot>
 			</table>
