@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	String contextPath = request.getContextPath(); 
+	pageContext.setAttribute("contextPath", contextPath);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +13,14 @@
 <script>
 	$(document).ready(function(){
 		fn_getAllMembers();
+		fn_getMember();
+		fn_registration();
 	});
 	function fn_getAllMembers(){
 		$.ajax({
 			/* 요청 */
 			type : 'get',
-			url : '<%=request.getContextPath()%>/member/list.do',
+			url : '${contextPath}/member/list.do',
 			/* 응답 */
 			dataType: 'json',
 			success: function(resData){
@@ -33,13 +39,66 @@
 					tr += '<td>' + (member.gender == 'M' ? '남자' : '여자') + '</td>';
 					tr += '<td>' + member.grade + '</td>';
 					tr += '<td>' + member.address + '</td>';
-					tr += '<td><input type="button" value="조회" class="btn_detail"></td>';
+					tr += '<td><input type="hidden" value="' + member.memberNo + '"><input type="button" value="조회" class="btn_detail"></td>';
 					tr += '</tr>';
 					$('#member_list').append(tr);
-				})
+				});
 			}
 		});
 	}
+	function fn_getMember(){
+		// "조회" 버튼은 동적 요소이기 때문에 다음 이벤트 방식을 사용해야 한다.
+		// $(부모요소).on(이벤트타입, 이벤트대상, 이벤트리스너)
+		$('body').on('click', '.btn_detail', function(){
+			$.ajax({
+				/* 요청 */
+				type: 'get',
+				url: '${contextPath}/member/detail.do',
+				data: 'memberNo=' + $(this).prev().val(),
+				/* 응답 */
+				dataType: 'json',
+				success: function(resData){ // resData : {"exists" : true, "member": {"id": "user3", ...}}
+					if(resData.exists) {
+						alert('회원 정보가 조회되었습니다.');
+						$('#id').val(resData.member.id).prop('readonly', true);
+						$('#name').val(resData.member.name);
+						$(':radio[name=gender][value=' + resData.member.gender + ']').prop('checked', true);
+						$('#grade').val(resData.member.grade);
+						$('#address').val(resData.member.address);
+					} else {
+						alert('조회된 회원 정보가 없습니다.');
+					}
+				}
+			});
+		});
+		// $('.btn_detail').click(function(){ // 원래 있던 버튼이 아니라 눌리지 않음.
+		//	alert('ahahah');
+		// });
+	}
+	
+	function fn_registration(){
+		
+		$('#btn_add').click(function(){
+			
+			$.ajax({
+				/* 요청 */
+				type: 'post',
+				url: '${contextPath}/member/add.do',
+				data: $('#frm_member').serialize(), // seialize() : 폼의 모든 입력 요소를 파라미터로 변환
+				/* 응답 */
+				dataType: 'json',
+				success: function(resData){ // resData : {"isSuccess" : true}
+					if(resData.isSuccess){
+						alert('신규 회원이 등록되었습니다.');
+						fn_getAllMembers(); // 목록을 새로 가져와서 갱신함
+					} else {
+						alert('신규 회원이 실패했습니다.');
+					}
+				}
+			}); // ajax
+		}); // click
+	} // function
+	
 </script>
 </head>
 <body>
