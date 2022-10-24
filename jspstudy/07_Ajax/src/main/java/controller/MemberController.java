@@ -9,17 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
-import service.StudentAddService;
-import service.StudentDetailService;
-import service.StudentFindService;
-import service.StudentListService;
-import service.StudentModifyService;
-import service.StudentRemoveService;
-import service.StudentService;
+import service.MemberListService;
+import service.MemberService;
 
 @WebServlet("*.do")
 
-public class StudentController extends HttpServlet {
+public class MemberController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
@@ -34,41 +29,26 @@ public class StudentController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String urlMapping = requestURI.substring(contextPath.length());
 		
-		// StudentService 객체
-		StudentService service = null;
+		// MemberService 객체
+		MemberService service = null;
 		
 		// ActionForward 객체
 		ActionForward af = null;
 		
 		// 요청에 따른 Service 선택
 		switch(urlMapping) {
-		case "/student/list.do":
-			service = new StudentListService();
+		case "/member/manage.do":
+			af = new ActionForward("/member/manage.jsp", false);
 			break;
-		case "/student/add.do":
-			service = new StudentAddService();
-			break;
-		case "/student/find.do":
-			service = new StudentFindService();
-			break;
-		case "/student/remove.do":
-			service = new StudentRemoveService();
-			break;
-		case "/student/detail.do":
-			service = new StudentDetailService();
-			break;
-		case "/student/modify.do":
-			service = new StudentModifyService();
-			break;	
-		case "/student/write.do":
-			af = new ActionForward("/student/write.jsp", false);
+		case "/member/list.do":
+			service = new MemberListService();
 			break;
 		}
 		
 		// 선택된 Service 실행
 		try {
 			if(service != null) {
-				af = service.execute(request, response);
+				service.execute(request, response);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
