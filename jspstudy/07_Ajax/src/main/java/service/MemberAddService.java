@@ -2,7 +2,7 @@ package service;
 
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;뽀로로
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ public class MemberAddService implements MemberService {
 		String gender = request.getParameter("gender");
 		String grade = request.getParameter("grade");
 		String address = request.getParameter("address");
-
+		
 		// 삽입할 Member member 생성
 		Member member = Member.builder()
 				.id(id)
@@ -31,8 +31,6 @@ public class MemberAddService implements MemberService {
 				.address(address)
 				.build();
 		
-		System.out.println(member);
-		
 		// 삽입
 		int result = MemberDao.getInstance().insertMember(member);
 		
@@ -41,16 +39,16 @@ public class MemberAddService implements MemberService {
 		
 		// 응답 데이터
 		/*
-		 	삽입 성공
-		 	{
-		 		"isSuccess" : true
-		 	}
-		 	
-		 	삽입 실패
-		 	{
-		 		"isSuccess" : false
-		 	}
-		 */
+			삽입 성공
+			{
+				"isSuccess": true
+			}
+			
+			삽입 실패
+			{
+				"isSuccess": false
+			}
+		*/
 		JSONObject obj = new JSONObject();
 		obj.put("isSuccess", result > 0);
 		
@@ -58,6 +56,9 @@ public class MemberAddService implements MemberService {
 		PrintWriter out = response.getWriter();
 		out.println(obj.toString());
 		out.close();
+		
+		
+		
 	}
 
 }
