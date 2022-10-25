@@ -2,7 +2,7 @@ package service;
 
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletRequest;뽀로로
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
