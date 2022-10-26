@@ -12,7 +12,7 @@
 	
 	<bean id="addr" class="com.gdu.app01.xml03.Address" p:jibun="가산동" p:road="디지털로" p:zipCode="101" />
 
-	<bean id="person" class="com.gdu.app01.xml03.Person" p:name="소나타" p:age="30" p:addr-ref="addr" /> <!-- 위에 id랑 ref랑 이름이 같아야 한다. -->
+	<bean id="per" class="com.gdu.app01.xml03.Person" p:name="소나타" p:age="30" p:addr-ref="addr" /> <!-- 위에 id랑 ref랑 이름이 같아야 한다. -->
 
 
 

@@ -8,11 +8,11 @@ public class SpringMain {
 	public static void main(String[] args) {
 		
 		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("xml02/appCtx.xml");
-		Car myCar = ctx.getBean("dreamCar", Car.class);
+		Car car = ctx.getBean("dreamCar", Car.class); 
 		
-		System.out.println(myCar.getModel());
-		System.out.println(myCar.getMaker());
-		Engine engine = myCar.getEngine();
+		System.out.println(car.getModel());
+		System.out.println(car.getMaker());
+		Engine engine = car.getEngine();
 		System.out.println(engine.getFuel());
 		System.out.println(engine.getEfficency());
 		System.out.println(engine.getCc());

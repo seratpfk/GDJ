@@ -8,7 +8,7 @@ public class SpringMain {
 	public static void main(String[] args) {
 		
 		// 기존 개발자
-		// 개발자가 Bean을 만들었다.
+		// 개발자가 Bean을 만들었다. (appCtx.xml)
 		// Calculator calculator = new Calculator();
 		
 		// 새로운 프레임워크
@@ -18,7 +18,7 @@ public class SpringMain {
 		// GenericXmlApplicationContext
 		// ClassPathXmlApplicationContext
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:xml01/appCtx.xml");
-		Calculator calculator = ctx.getBean("calc", Calculator.class);
+		Calculator calculator = ctx.getBean("calc", Calculator.class); // bean id="calc"
 		calculator.add(5, 2);
 		calculator.sub(5, 2);
 		calculator.mul(5, 2);

@@ -8,7 +8,7 @@ public class SpringMain {
 	public static void main(String[] args) {
 		
 		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("xml03/appCtx.xml");
-		Person person = ctx.getBean("person", Person.class);
+		Person person = ctx.getBean("per", Person.class); // bean id="per"
 		
 		System.out.println(person.getName());
 		System.out.println(person.getAge());

@@ -12,9 +12,9 @@
 	<!-- 
 		1. 디폴트 생성자 + setter
 	-->
-	<bean id="calc" class="com.gdu.app01.xml01.Calculator"></bean>
+	<bean id="calc" class="com.gdu.app01.xml01.Calculator"></bean> <!-- Calculator 입력 후 Ctrl + spacebar -->
 	<bean id="haksang" class="com.gdu.app01.xml01.Student">
-		<property name="name">
+		<property name="name"> <!-- student field의 값을 전달 -->
 			<value>홍길동</value>
 		</property>
 		<property name="school">
