@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 작성</title>
+<title>Insert title here</title>
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <script>
 	$(document).ready(function(){
@@ -29,7 +29,7 @@
 </script>
 </head>
 <body>
-	
+
 	<form id="frm_write" method="POST" action="${contextPath}/board/add.do">
 		<table border=1>
 			<thead>

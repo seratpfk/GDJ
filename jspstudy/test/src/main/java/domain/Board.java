@@ -17,7 +17,8 @@ import lombok.ToString;
 @ToString
 public class Board {
 	private int boardNo;
-	private String writer; // 내용이 없어지고 작성자가 생김
+	private String writer;
 	private String title;
+	private String content;
 	private Date createDate;
 }

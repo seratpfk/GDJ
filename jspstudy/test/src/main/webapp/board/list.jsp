@@ -23,10 +23,9 @@
 </script>
 </head>
 <body>
-
-	<!-- ${count}가 안먹음 -->
-
 	
+	<!-- count가 안됨 -->
+	<span>총 게시물: ${count }개</span>
 	<table border=1>
 		<thead>
 			<tr>
@@ -47,7 +46,7 @@
 					<tr>
 						<td>${b.boardNo}</td>
 						<td>${b.writer}</td>
-						<td>${b.title}</td>
+						<td onclick= "location.href='${contextPath }/board/detail.do?boardNo=${b.boardNo }'">${b.title}</td> <!-- 디자인이 링크처럼 안됨. -->
 						<td>${b.createDate}</td>
 					</tr>
 				</c:forEach>

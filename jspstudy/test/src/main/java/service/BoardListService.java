@@ -13,7 +13,7 @@ public class BoardListService implements BoardService {
 
 		// request에 게시글 목록 저장
 		request.setAttribute("boards", BoardDao.getInstance().selectAllBoards());
-		// request.setAttribute("count", BoardDao.getInstance().selectAllBoardsCount());
+		request.setAttribute("count", BoardDao.getInstance().selectAllBoardsCount());
 		
 		// list.jsp로 포워딩
 		ActionForward af = new ActionForward();

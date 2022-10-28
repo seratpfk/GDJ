@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="human" class="com.gdu.app01.xml06.Person">
+		
+		<!-- List -->
+		<property name="hobbies">
+			<list>
+				<value>여행</value>
+				<value>운동</value>
+			</list>
+		</property>
+		<!-- property 태그는 Setter를 통해서 주입됨. 따라서 Setter 없는 상태에서 property 태그를 사용하면 오류발생 -->
+		
+		<!-- Set(중복데이터 한번만 저장) -->
+		<property name="contacts">
+			<set>
+				<value>010-1111-1111</value>
+				<value>010-1111-1111</value>
+				<value>010-1111-1111</value>
+				<value>02-123-4567</value>
+			</set>
+		</property>
+		
+		<!-- Map -->
+		<property name="friends">
+			<map>
+				<entry key="동네친구" value="영심이"></entry>
+				<entry key="학교친구" value="최자두"></entry>
+				<entry key="회사친구" value="나루토"></entry>
+			</map>
+		</property>
+		
+		
+		
+	</bean>
+
+</beans>

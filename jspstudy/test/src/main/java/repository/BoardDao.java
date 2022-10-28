@@ -84,13 +84,11 @@ public class BoardDao {
 			return result;
 		}
 		
-		/*
 		// 6. 전체게시글수
 		public int selectAllBoardsCount() {
 			SqlSession ss = factory.openSession();
-			int count = ss.selectOne("mybatis.mapper.board.selectAllBoards");
+			int count = ss.selectOne("mybatis.mapper.board.selectAllBoardsCount");
 			ss.close();
 			return count;
 		}
-		*/
 }
