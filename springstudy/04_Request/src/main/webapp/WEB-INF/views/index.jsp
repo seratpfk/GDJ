@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="${contextPath}/resources/js/jquery-3.6.1.min.js"></script>
 </head>
 <body>
 
@@ -28,10 +28,10 @@
 		$('#btn').click(function(){
 			
 			// location.href='${contextPath}/member/detail2?id=admin&pw=1234';
-			// location.href='${contextPath}/member/detail2';
+			location.href='${contextPath}/member/detail2';
 			
 			// location.href='${contextPath}/member/detail3?id=admin&pw=1234';
-			location.href='${contextPath}/member/detail3';
+			// location.href='${contextPath}/member/detail3';
 			
 		});
 	</script>
@@ -50,7 +50,11 @@
 	<hr>
 	
 	<div>
-		<a href="${contextPath}/board/detail1?title=공지사항&hit=10">전송</a>
+		<a href="${contextPath}/board/detail1?title=공지사항&hit=10">전송1</a>
+	</div>
+	
+	<div>
+		<a href="${contextPath}/board/detail3?title=공지사항&hit=10">전송3</a>
 	</div>
 	
 		
