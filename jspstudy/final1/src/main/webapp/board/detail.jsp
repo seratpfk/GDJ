@@ -34,40 +34,15 @@
 </head>
 <body>
 
-	<table border=1>
-		<thead>
-				<tr>
-					<td>작성자</td>
-					<td>
-						<input type="text" id="writer" name="writer" value="${board.writer }">
-					</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td>
-						<input type="text" id="title" name="title" value="${board.title }">
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>내용</td>
-					<td>
-						<textarea placeholder="공지사항입니다." rows="10" cols="50"></textarea>
-					</td>
-				</tr>
-			</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4">
-					<input type="button" value="수정" id="btn_edit">
-					<input type="button" value="목록" id="btn_list">
-					<input type="button" value="삭제" id="btn_remove">
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
+	<h1>${board.title }</h1>
+	<pre>${board.content }</pre>
+	<div>${board.createDate }</div>
+	
+	<hr>
+	
+	<input type="button" value="편집" id="btn_edit">
+	<input type="button" value="삭제" id="btn_remove">
+	<input type="button" value="목록" id="btn_list">
 
 </body>
 </html>

@@ -7,25 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../assets/js/jquery-3.6.1.min.js"></script>
 <script>
+	
 	$(document).ready(function(){
-		
-		$('#btn_add').click(function(event){
+		$('#btn_write').click(function(event){
 			location.href = '${contextPath}/board/write.do';
 		});
-		
-		$('#btn_list').click(function(event){
-			location.href = '${contextPath}/board/list.do';
-		});
-		
 	});
+	
 </script>
 </head>
 <body>
-	
-	<!-- count가 안됨 -->
-	<span>총 게시물: ${count }개</span>
+
+   <span>총 게시글: ${count} 개</span>
 	<table border=1>
 		<thead>
 			<tr>
@@ -36,17 +31,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:if test="${count eq 0}"> 
+			<c:if test="${count eq 0}"> <!-- eq: equal-->
 				<tr>
-					<td colspan="4">게시물이 없습니다.</td>
+					<td colspan="4">게시물이 없습니다.</td> 
 				</tr>
 			</c:if>
-			<c:if test="${count ne 0}">
-				<c:forEach items="${boards}" var="b">
+			<c:if test="${count ne 0}"> <!-- ne: not equal -->
+				<%-- <c:forEach>: 목록의 갯수만큼 반복하는 반복문 --%>
+				<%-- items(board)에 담겨있는 객체를 var(b)로 지정된 변수로 불러 올 수 있다. --%>
+				<c:forEach items="${board}" var="b"> 
 					<tr>
-						<td>${b.boardNo}</td>
+						<td>${b.boardNo}</td> <!-- board의 순번 불러오기 -->
 						<td>${b.writer}</td>
-						<td onclick= "location.href='${contextPath }/board/detail.do?boardNo=${b.boardNo }'">${b.title}</td> <!-- 디자인이 링크처럼 안됨. -->
+						<td>${b.title}</td>
 						<td>${b.createDate}</td>
 					</tr>
 				</c:forEach>
@@ -54,9 +51,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="4">
-					<input type="button" value="새글작성" class="btn_primary btn_add" id="btn_add">
-				</td>
+				<td colspan="4"><button>새글작성</button></td>
 			</tr>
 		</tfoot>
 	</table>

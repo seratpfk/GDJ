@@ -1,4 +1,4 @@
-package com.gdu.app05;
+package com.gdu.app05.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,11 +18,13 @@ public class MyController2 {
 
 	@GetMapping("board")
 	public String board() {
-		return "board"; // board.jsp로 forward
+		return "board";  // board.jsp로 forward
 	}
+	
 	
 	@Autowired
 	private BoardService boardService;
+	
 	
 	@ResponseBody
 	@GetMapping(value="board/detail1"
@@ -30,16 +32,19 @@ public class MyController2 {
 	public ResponseEntity<Board> detail1(HttpServletRequest request){
 		return boardService.execute1(request);
 	}
-
+	
+	
 	@ResponseBody
-	@GetMapping("board/detail2") // produces가 없음을 주의! 반환값 ResponseEntity에 관련 코드를 작성하였음
-	public ResponseEntity<Board> detail2(@RequestParam(value="title") String title, @RequestParam(value="content") String content) {
-	return boardService.execute2(title, content);
+	@GetMapping("board/detail2")  // produces가 없음을 주의! 반환값 ResponseEntity에 관련 코드를 작성하였음
+	public ResponseEntity<Board> detail2(@RequestParam(value="title") String title, @RequestParam(value="content") String content){
+		return boardService.execute2(title, content);
 	}
+	
 	
 	@ResponseBody
 	@GetMapping("board/detail3")  // 이번에도 produces가 없음
-	   public ResponseEntity<Board> detail3(Board board) {
-	      return boardService.execute3(board);
-	   }
+	public ResponseEntity<Board> detail3(Board board){
+		return boardService.execute3(board);
+	}
+	
 }

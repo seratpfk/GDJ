@@ -17,7 +17,6 @@ import lombok.ToString;
 @ToString
 public class Board {
 	private int boardNo;
-	private String writer;
 	private String title;
 	private String content;
 	private Date createDate;

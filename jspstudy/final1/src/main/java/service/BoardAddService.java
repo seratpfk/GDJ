@@ -16,12 +16,12 @@ public class BoardAddService implements BoardService {
 
 		// 요청 파라미터
 		String title = request.getParameter("title");
-		String writer = request.getParameter("writer");
+		String content = request.getParameter("content");
 		
 		// DB로 보내기 위해 Board board 생성
 		Board board = new Board();
 		board.setTitle(title);
-		board.setWriter(writer);
+		board.setContent(content);
 		
 		// DB로 Board board 보내기(삽입)
 		int result = BoardDao.getInstance().insertBoard(board);
@@ -30,12 +30,12 @@ public class BoardAddService implements BoardService {
 		PrintWriter out = response.getWriter();
 		if(result > 0) {
 			out.println("<script>");
-			out.println("alert('삽입 성공')");
+			out.println("alert('게시글이 등록되었습니다.')");
 			out.println("location.href='" + request.getContextPath() + "/board/list.do'");
 			out.println("</script>");
 		} else {
 			out.println("<script>");
-			out.println("alert('삽입 실패')");
+			out.println("alert('게시글 등록이 실패했습니다.')");
 			out.println("history.back()"); // history.go(-1)
 			out.println("</script>");
 		}

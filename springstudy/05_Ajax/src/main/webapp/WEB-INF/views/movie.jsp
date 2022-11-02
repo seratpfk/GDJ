@@ -29,14 +29,14 @@
 					$('#boxOfficeList').empty();
 					// 가져온 목록 나타내기
 					$.each(resData.boxOfficeResult.dailyBoxOfficeList, function(i, movie){
-						var tr = '<tr>';
-						tr += '<td>' + movie.rank + '</td>';
-						tr += '<td>' + movie.movieNm + '</td>';
-						tr += '<td>' + movie.openDt + '</td>';
-						tr += '<td>' + movie.audiCnt + '</td>';
-						tr += '<td>' + movie.audiAcc + '</td>';
-						tr += '</tr>';
-						$('#boxOfficeList').append(tr);
+						$('<tr>')
+						.append($('<td>').text(movie.rank))
+						.append($('<td>').text(movie.movieNm))
+						.append($('<td>').text(movie.openDt))
+						.append($('<td>').text(movie.audiCnt))
+						.append($('<td>').text(movie.audiAcc))
+						.appendTo('#boxOfficeList')
+
 					});
 				}
 			});

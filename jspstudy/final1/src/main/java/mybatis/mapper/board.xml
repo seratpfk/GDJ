@@ -21,7 +21,7 @@
 	 		2) resultType : 목록보기, 상세보기 모두 domain 패키지의 Board를 반환
 	 -->
 	 <select id="selectAllBoards" resultType="Board">
-		SELECT BOARD_NO, WRITER, TITLE, CREATE_DATE
+		SELECT BOARD_NO, TITLE, CONTENT, CREATE_DATE
 		  FROM BOARD
 		 ORDER BY BOARD_NO DESC
 	</select>
@@ -32,7 +32,7 @@
 			2) resultType : 목록보기, 상세보기 모두 domain 패키지의 Board를 반환
 	-->
 	<select id="selectBoardByNo" parameterType="int" resultType="domain.Board">
-		SELECT BOARD_NO, WRITER, TITLE, CONTENT, CREATE_DATE
+		SELECT BOARD_NO, TITLE, CONTENT, CREATE_DATE
 		  FROM BOARD
 		 WHERE BOARD_NO = #{boardNo}
 	</select>
@@ -44,9 +44,9 @@
 	-->
 	<insert id="insertBoard" parameterType="Board">
 		INSERT INTO BOARD
-			(BOARD_NO, WRITER, TITLE, CREATE_DATE)
+			(BOARD_NO, TITLE, CONTENT, CREATE_DATE)
 		VALUES
-			(BOARD_SEQ.NEXTVAL, #{writer}, #{title}, SYSDATE)
+			(BOARD_SEQ.NEXTVAL, #{title}, #{content}, SYSDATE)
 	</insert>
 	
 	<!-- 
@@ -67,14 +67,9 @@
 	-->
 	<update id="updateBoard" parameterType="Board">
 		UPDATE BOARD
-		   SET WRITER = #{writer}, TITLE = #{title}
+		   SET TITLE = #{title}, CONTENT = #{content}
 		 WHERE BOARD_NO = #{boardNo}
 	</update>
-	
-	<select id="selectAllBoardsCount" resultType="int">
-		SELECT COUNT(*)
-		  FROM BOARD
-	</select>
 	
 	
 	

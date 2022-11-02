@@ -16,13 +16,13 @@ public class BoardModifyService implements BoardService {
 		
 		// 요청 파라미터
 		String title = request.getParameter("title");
-		String writer = request.getParameter("writer");
+		String content = request.getParameter("content");
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
 		// DB로 보낼 Board board 생성
 		Board board = new Board();
 		board.setTitle(title);
-		board.setWriter(writer);
+		board.setContent(content);
 		board.setBoardNo(boardNo);
 		
 		// DB로 Board board 보내기(수정)
