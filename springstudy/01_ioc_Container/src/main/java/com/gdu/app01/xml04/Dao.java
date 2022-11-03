@@ -5,10 +5,10 @@ public class Dao {
 	// method
 	
 	public void list() {
-		System.out.println("¸ñ·Ï °¡Á®¿À±â");
+		System.out.println("ëª©ë¡ ê°€ì ¸ì˜¤ê¸°");
+	}
+	public void detail() {
+		System.out.println("ìƒì„¸ë³´ê¸°");
 	}
 	
-	public void detail() {
-		System.out.println("»ó¼¼º¸±â");
-	}
 }

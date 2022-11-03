@@ -17,9 +17,9 @@ public class Contact {
 	
 	// method
 	public void info() {
-		System.out.println("ÁÖ¼Ò: " + address);
-		System.out.println("ÀÌ¸ŞÀÏ: " + email);
-		System.out.println("¿¬¶ôÃ³: " + tel);
+		System.out.println("ì£¼ì†Œ: " + address);
+		System.out.println("ì´ë©”ì¼: " + email);
+		System.out.println("ì—°ë½ì²˜: " + tel);
 	}
 	
 	

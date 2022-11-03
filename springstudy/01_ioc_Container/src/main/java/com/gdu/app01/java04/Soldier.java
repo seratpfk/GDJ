@@ -15,7 +15,7 @@ public class Soldier {
 	
 	// info()
 	public void info() {
-		System.out.println("¿Ã∏ß: " + name);
+		System.out.println("Ïù¥Î¶Ñ: " + name);
 		gun.info();
 	}
 	

@@ -21,9 +21,16 @@
 			2. 응답
 				이미지의 byte[]
 		-->
-		<img id="image" width="200px">
+		<div id="galleries"></div>
 		<script>
-			$('#image').attr('src', '${contextPath}/image/display?path=' + encodeURIComponent('C:\\GDJ\\images') + '&filename=animal1.jpg');
+			for(let n = 1; n <= 10; n++) {
+				$('<div>')
+	            .append($('<img>')
+	               .attr('src', '${contextPath}/image/display?path=' + encodeURIComponent('C:\\GDJ\\images') + '&filename=animal'+n+'.jpg')
+	               .attr('width', '200px'))
+	            .appendTo('#galleries');
+
+			}
 		</script> 
 	</div>
 

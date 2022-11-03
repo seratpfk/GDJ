@@ -7,33 +7,33 @@ public class SpringMain {
 
 	public static void main(String[] args) {
 		
-		// ±âÁ¸ °³¹ßÀÚ
-		// °³¹ßÀÚ°¡ BeanÀ» ¸¸µé¾ú´Ù. (appCtx.xml)
+		// ê¸°ì¡´ ê°œë°œì
+		// ê°œë°œìê°€ Beanì„ ë§Œë“¤ì—ˆë‹¤.
 		// Calculator calculator = new Calculator();
+
+		// ìƒˆë¡œìš´ í”„ë ˆì„ì›Œí¬
+		// í”„ë ˆì„ì›Œí¬ê°€ ë§Œë“  Beanì„ ê°€ì ¸ë‹¤ ì“´ë‹¤.
 		
-		// »õ·Î¿î ÇÁ·¹ÀÓ¿öÅ©
-		// ÇÁ·¹ÀÓ¿öÅ©°¡ ¸¸µç BeanÀ» °¡Á®´Ù ¾´´Ù.
-		
-		// XML¿¡ ÀúÀåµÈ Bean °¡Á®¿À´Â Å¬·¡½º
+		// XMLì— ì €ì¥ëœ Bean ê°€ì ¸ì˜¤ëŠ” í´ë˜ìŠ¤
 		// GenericXmlApplicationContext
 		// ClassPathXmlApplicationContext
-		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:xml01/appCtx.xml");
-		Calculator calculator = ctx.getBean("calc", Calculator.class); // bean id="calc"
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext("xml01/appCtx.xml");
+		Calculator calculator = ctx.getBean("calc", Calculator.class);
 		calculator.add(5, 2);
 		calculator.sub(5, 2);
 		calculator.mul(5, 2);
 		calculator.div(5, 2);
 		
-		Student student = ctx.getBean("haksang", Student.class); // Student student = (Student)ctx.getBean("haksang");
+		Student student = ctx.getBean("haksang", Student.class);  // Student student = (Student)ctx.getBean("haksang");
 		System.out.println(student.getName());
 		System.out.println(student.getSchool());
 		student.getCalculator().add(7, 3);
 		student.getCalculator().sub(7, 3);
 		student.getCalculator().mul(7, 3);
 		student.getCalculator().div(7, 3);
-
-		ctx.close();
-
+		
+		ctx.close();  // ìƒëµ ê°€ëŠ¥
+		
 	}
 
 }

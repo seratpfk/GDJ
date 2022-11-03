@@ -5,95 +5,95 @@ import org.springframework.context.annotation.Configuration;
 
 /*
  	@Configuration
- 	¾È³ç. ³­ BeanÀ» ¸¸µå´Â Java ÆÄÀÏÀÌ¾ß.
- 	Spring Bean Configuration FileÇÏ°í ÇÏ´Â ÀÏÀÌ °°Áö.
+ 	ì•ˆë…•. ë‚œ Beanì„ ë§Œë“œëŠ” Java íŒŒì¼ì´ì•¼.
+ 	Spring Bean Configuration Fileí•˜ê³  í•˜ëŠ” ì¼ì´ ê°™ì§€.
  */
 
 @Configuration
 public class SpringBeanConfig {
 
-	// ¸Ş¼Òµå ÇÏ³ª´ç Bean ÇÏ³ª¸¦ ¸Ã¾Æ¼­ »ı¼ºÇÑ´Ù.
+	// ë©”ì†Œë“œ í•˜ë‚˜ë‹¹ Bean í•˜ë‚˜ë¥¼ ë§¡ì•„ì„œ ìƒì„±í•œë‹¤.
 	
 	/*
 	 	@Bean
-	 	¾È³ç. ³­ BeanÀ» ¸¸µå´Â ¸Ş¼Òµå¾ß.
-	 	¸Ş¼ÒµåÀÌ¸§ÀÌ BeanÀÇ ÀÌ¸§(id)ÀÌ°í,
-	 	¹İÈ¯Å¸ÀÔÀÌ BeanÀÇ Å¸ÀÔ(class)¾ß.
+	 	ì•ˆë…•. ë‚œ Beanì„ ë§Œë“œëŠ” ë©”ì†Œë“œì•¼.
+	 	ë©”ì†Œë“œì´ë¦„ì´ Beanì˜ ì´ë¦„(id)ì´ê³ ,
+	 	ë°˜í™˜íƒ€ì…ì´ Beanì˜ íƒ€ì…(class)ì•¼.
 	 	
 	 */
 	
 	/*
 	 	<bean id="song1" class="Song">
-	 		<property name="title" value="Á¦¸ñ1"/>
-	 		<property name="genre" value="Àå¸£1"/>
+	 		<property name="title" value="ì œëª©1"/>
+	 		<property name="genre" value="ì¥ë¥´1"/>
 	 	</bean>
 	 */
 	
 	@Bean
 	public Song song1() {
 		Song song = new Song();
-		song.setTitle("Á¦¸ñ1");
-		song.setGenre("Àå¸£1");
+		song.setTitle("ì œëª©1");
+		song.setGenre("ì¥ë¥´1");
 		return song;
 	}
 	
 	/*
  	<bean id="song2" class="Song">
- 		<property name="title" value="Á¦¸ñ2"/>
- 		<property name="genre" value="Àå¸£2"/>
+ 		<property name="title" value="ì œëª©2"/>
+ 		<property name="genre" value="ì¥ë¥´2"/>
  	</bean>
 	*/
 
-	@Bean(name="song2")  // @Bean¿¡ name°ªÀ» ÁöÁ¤ÇÏ¸é id·Î »ç¿ëµÈ´Ù.
-	public Song sadjksfd1() { // ¸Ş¼ÒµåÀÌ¸§Àº ¾Æ¹«°Å³ª Àû¾îµµ µÈ´Ù.
+	@Bean(name="song2")  // @Beanì— nameê°’ì„ ì§€ì •í•˜ë©´ idë¡œ ì‚¬ìš©ëœë‹¤.
+	public Song sadjksfd1() { // ë©”ì†Œë“œì´ë¦„ì€ ì•„ë¬´ê±°ë‚˜ ì ì–´ë„ ëœë‹¤.
 		Song song = new Song();
-		song.setTitle("Á¦¸ñ2");
-		song.setGenre("Àå¸£2");
+		song.setTitle("ì œëª©2");
+		song.setGenre("ì¥ë¥´2");
 		return song;
 	}
 	
 	/*
  	<bean id="song3" class="Song">
- 		<property name="title" value="Á¦¸ñ3"/>
- 		<property name="genre" value="Àå¸£3"/>
+ 		<property name="title" value="ì œëª©3"/>
+ 		<property name="genre" value="ì¥ë¥´3"/>
  	</bean>
 	*/
 	@Bean
 	public Song song3() {
-		return new Song("Á¦¸ñ3", "Àå¸£3");
+		return new Song("ì œëª©3", "ì¥ë¥´3");
 	}
 	
-	// ¹Ì¼Ç
+	// ë¯¸ì…˜
 	
-	// song1¸¦ °¡Áö´Â singer1À» ¸¸µé¾î º¸ÀÚ
+	// song1ë¥¼ ê°€ì§€ëŠ” singer1ì„ ë§Œë“¤ì–´ ë³´ì
 	// setter injection
 	
 	@Bean
 	public Singer singer1() {
 		Singer singer = new Singer();
-		singer.setName("°¡¼ö1");
+		singer.setName("ê°€ìˆ˜1");
 		singer.setSong(song1());
 		return singer;
 	}
 	
 	
-	// song2¸¦ °¡Áö´Â singer2À» ¸¸µé¾î º¸ÀÚ
+	// song2ë¥¼ ê°€ì§€ëŠ” singer2ì„ ë§Œë“¤ì–´ ë³´ì
 	// setter injection
 	
 	@Bean(name="singer2")
 	public Singer qdse() {
 		Singer singer = new Singer();
-		singer.setName("°¡¼ö2");
+		singer.setName("ê°€ìˆ˜2");
 		singer.setSong(sadjksfd1());
 		return singer;
 	}
 	
-	// song3¸¦ °¡Áö´Â singer3À» ¸¸µé¾î º¸ÀÚ
+	// song3ë¥¼ ê°€ì§€ëŠ” singer3ì„ ë§Œë“¤ì–´ ë³´ì
 	// setter injection
 	
 	@Bean
 	public Singer singer3() {
-		return new Singer("°¡¼ö3", song3());
+		return new Singer("ê°€ìˆ˜3", song3());
 	}
 	
 }

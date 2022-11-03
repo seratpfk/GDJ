@@ -19,21 +19,21 @@ public class SpringBeanConfig {
 		// List
 		List<Integer> scores = new ArrayList<Integer>();
 		for(int cnt = 0; cnt < 5; cnt++) {
-			scores.add((int)(Math.random() * 101 + 0)); // 0ºÎÅÍ 101°³ÀÇ ³­¼ö°¡ ¹ß»ı(0~100)
+			scores.add((int)(Math.random() * 101 + 0)); // 0ë¶€í„° 101ê°œì˜ ë‚œìˆ˜ê°€ ë°œìƒ(0~100)
 		}
 		
 		// Set
 		Set<String> awards = new HashSet<String>();
-		awards.add("°³±Ù»ó");
-		awards.add("Àå·Á»ó");
-		awards.add("¿ì¼ö»ó");
+		awards.add("ê°œê·¼ìƒ");
+		awards.add("ì¥ë ¤ìƒ");
+		awards.add("ìš°ìˆ˜ìƒ");
 		
 		// Map
 		Map<String, String> contact = new HashMap<String, String>();
-		contact.put("address", "¼­¿ï");
+		contact.put("address", "ì„œìš¸");
 		contact.put("tel", "02-123-4567");
 		
-		// Bean »ı¼º ¹× ¹İÈ¯
+		// Bean ìƒì„± ë° ë°˜í™˜
 		Student student = new Student();
 		student.setScores(scores);
 		student.setAwards(awards);

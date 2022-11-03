@@ -4,13 +4,15 @@ import java.util.List;
 
 public class Member {
 
+	// field
 	private String name;
-	private List<String> course;
+	private List<String> course;  // 등록과정(헬스, 수영, 스피닝, 필라테스 등)
 	private double height;
 	private double weight;
-	private BMICaculator bmiCalc;
-	
-	public Member(String name, List<String> course, double height, double weight, BMICaculator bmiCalc) {
+	private BMICalculator bmiCalc;
+
+	// constructor
+	public Member(String name, List<String> course, double height, double weight, BMICalculator bmiCalc) {
 		super();
 		this.name = name;
 		this.course = course;
@@ -19,6 +21,7 @@ public class Member {
 		this.bmiCalc = bmiCalc;
 	}
 	
+	// info() 메소드
 	public void info() {
 		System.out.println("Name: " + name);
 		for(String str : course) {

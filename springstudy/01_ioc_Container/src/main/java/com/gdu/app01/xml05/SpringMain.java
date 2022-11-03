@@ -15,7 +15,7 @@ public class SpringMain {
 
 		if(con != null) {
 			con.close();
-			System.out.println("Connection ÇØÁ¦ ¿Ï·á");
+			System.out.println("Connection í•´ì œ ì™„ë£Œ");
 		}
 		
 		ctx.close();

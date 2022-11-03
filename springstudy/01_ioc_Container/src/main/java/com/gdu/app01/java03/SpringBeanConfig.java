@@ -9,7 +9,7 @@ public class SpringBeanConfig {
 	@Bean
 	public Publisher publisher1() {
 		Publisher publisher = new Publisher();
-		publisher.setName("ÇÑ±¹ÃâÆÇ»ç");
+		publisher.setName("í•œêµ­ì¶œíŒì‚¬");
 		publisher.setTel("02-111-1111");
 		return publisher;
 	}
@@ -17,8 +17,8 @@ public class SpringBeanConfig {
 	@Bean
 	public Book book1() {
 		Book book = new Book();
-		book.setTitle("¼Ò³ª±â");
-		book.setAuthor("È²¼ø¿ø");
+		book.setTitle("ì†Œë‚˜ê¸°");
+		book.setAuthor("í™©ìˆœì›");
 		book.setPublisher(publisher1());
 		return book;
 	}

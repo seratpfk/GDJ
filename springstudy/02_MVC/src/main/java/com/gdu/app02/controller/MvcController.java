@@ -10,106 +10,129 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /*
-	@Controllr
+	@Controller
 	
-	¾È³ç, ³­ ÄÁÆ®·Ñ·¯¾ß
-	@Component¿¡ ÀÇÇØ¼­ ÀÚµ¿À¸·Î BeanÀ¸·Î ¸¸µé¾î Áö°í ½ºÇÁ¸µ¿¡ ÀÇÇØ¼­ »ç¿ëµÇÁö.
- */
+	ì•ˆë…•. ë‚œ ì»¨íŠ¸ë¡¤ëŸ¬ì•¼.
+	@Componentì— ì˜í•´ì„œ ìë™ìœ¼ë¡œ Beanìœ¼ë¡œ ë§Œë“¤ì–´ ì§€ê³  ìŠ¤í”„ë§ì— ì˜í•´ì„œ ì‚¬ìš©ë˜ì§€.
+*/
 
 @Controller
 public class MvcController {
 
-	// ¸Ş¼Òµå 1°³ : ¿äÃ» 1°³¿Í ÀÀ´ä 1°³¸¦ Ã³¸®ÇÏ´Â ´ÜÀ§
+
+	// ë©”ì†Œë“œ 1ê°œ : ìš”ì²­ 1ê°œì™€ ì‘ë‹µ 1ê°œë¥¼ ì²˜ë¦¬í•˜ëŠ” ë‹¨ìœ„
+	
 	
 	/*
 		@RequestMapping
 		
-		¾È³ç. ³­ ¿äÃ»À» ÀÎ½ÄÇÏ´Â ¾Ö³ÊÅ×ÀÌ¼ÇÀÌ¾ß.
-		URL¸ÅÇÎ°ú ¿äÃ» ¸Ş¼Òµå(GET/POSt)¸¦ ÀÎ½ÄÇÏÁö.
+		ì•ˆë…•. ë‚œ ìš”ì²­ì„ ì¸ì‹í•˜ëŠ” ì• ë„ˆí…Œì´ì…˜ì´ì•¼.
+		URLë§¤í•‘ê³¼ ìš”ì²­ë©”ì†Œë“œ(GET/POST)ë¥¼ ì¸ì‹í•˜ì§€.
 		
-		¼Ó¼º
-			1) value: URL mapping
-			2) method : reauestMethod 
-	 */
+		ì†ì„±
+			1) value  : URLMapping
+			2) method : RequestMethod
+	*/
 	
-	// welcom ÆÄÀÏ ÀÛ¾÷ÇÏ±â
-	// URLMapiingÀ¸·Î "/"¸¦ ¿äÃ»ÇÏ¸é "/WEB-INF/views/index.jsp"¸¦ ¿­¾îÁØ´Ù.
+	
+	// welcome íŒŒì¼ ì‘ì—…í•˜ê¸°
+	// URLMappingìœ¼ë¡œ "/"ë¥¼ ìš”ì²­í•˜ë©´ "/WEB-INF/views/index.jsp"ë¥¼ ì—´ì–´ì¤€ë‹¤.
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	
-	// ¸Ş¼Òµå ÀÛ¼º ¹æ¹ı
-	// 1. ¹İÈ¯Å¸ÀÔ : String (ÀÀ´äÇÒ ºä(JSP)ÀÇ ÀÌ¸§À» ¹İÈ¯)
-	// 2. ¸Ş¼Òµå¸í : ¾Æ¹« ÀÏµµ ¾ÈÇÔ. ¸¾´ë·Î ÀÛ¼º.
-	// 3. ¸Å°³º¯¼ö : ¼±ÅÃ(¿äÃ»ÀÌ ÀÖÀ¸¸é request, ÀÀ´äÀ» ¸¸µé¸é response µî)
+	
+	// ë©”ì†Œë“œ ì‘ì„± ë°©ë²•
+	// 1. ë°˜í™˜íƒ€ì… : String (ì‘ë‹µí•  ë·°(JSP)ì˜ ì´ë¦„ì„ ë°˜í™˜)
+	// 2. ë©”ì†Œë“œëª… : ì•„ë¬´ ì¼ë„ ì•ˆí•¨. ë§˜ëŒ€ë¡œ ì‘ì„±.
+	// 3. ë§¤ê°œë³€ìˆ˜ : ì„ íƒ (ìš”ì²­ì´ ìˆìœ¼ë©´ request, ì‘ë‹µì„ ë§Œë“¤ë©´ response ë“±)
 	
 	public String welcome() {
-		return "index"; // DispatcherServletÀÇ ViewResolver¿¡ ÀÇÇØ¼­ ÇØ¼®µÈ´Ù.
-						// prefix="/WEB-INF/views/"
-						// suffix=".jsp"
-						// prefix¿Í suffix¿¡ ÀÇÇØ¼­ "/WEB-INF/views/index.jsp"¿Í °°ÀÌ ÇØ¼®µÇ°í Ã³¸®µÈ´Ù.
 		
-		// index.jsp·Î forwardÇßÀ»±î? redirectÇßÀ»±î?
-		// Á¤´ä : forwardÇß´Ù.
-		// redirectÇÒ¶§´Â return "redirect: °æ·Î"; Ã³·³ ¹İÈ¯ÇÑ´Ù.
+		return "index";  // DispatcherServletì˜ ViewResolverì— ì˜í•´ì„œ í•´ì„ëœë‹¤.
+		                 // prefix="/WEB-INF/views/"
+		                 // suffix=".jsp"
+		                 // prefixì™€ suffixì— ì˜í•´ì„œ "/WEB-INF/views/index.jsp"ì™€ ê°™ì´ í•´ì„ë˜ê³  ì²˜ë¦¬ëœë‹¤.
+		
+		// index.jspë¡œ forwardí–ˆì„ê¹Œ? redirectí–ˆì„ê¹Œ?
+		// ì •ë‹µ : forwardí–ˆë‹¤.
+		// redirectí• ë•ŒëŠ” return "redirect:ê²½ë¡œ"; ì²˜ëŸ¼ ë°˜í™˜í•œë‹¤.
 		
 	}
+	
+	
 	
 	// <a href="${contextPath}/animal">
 	@RequestMapping(value="/animal", method=RequestMethod.GET)
-	public String µ¿¹°º¸·¯°¡±â() {
-		// /WEB-INF/views/ + gallary/animal + .jsp
+	public String ë™ë¬¼ë³´ëŸ¬ê°€ê¸°() {
+		
+		// /WEB-INF/views/ + gallery/animal + .jsp
+		
 		return "gallery/animal";
+		
 	}
 	
 	// @RequestMapping(value="/animal", method=RequestMethod.GET)
-	// @RequestMapping(value="animal", method=RequestMethod.GET)  ½½·¡½Ã°¡ ¾ø¾îµµ µË´Ï´Ù.
-	// @RequestMapping(value="/animal")                           GETÀº ¾ø¾îµµ µË´Ï´Ù.
-	// @RequestMapping("/animal")                                 value·Î ÀÎ½ÄÇÕ´Ï´Ù.
-	// @RequestMapping("animal")                                  ÃÖÁ¾¹öÀüÀÔ´Ï´Ù.
-
+	// @RequestMapping(value="animal", method=RequestMethod.GET)   ìŠ¬ë˜ì‹œê°€ ì—†ì–´ë„ ë©ë‹ˆë‹¤.
+	// @RequestMapping(value="/animal")                            GETì€ ì—†ì–´ë„ ë©ë‹ˆë‹¤.	
+	// @RequestMapping("/animal")                                  valueë¡œ ì¸ì‹í•©ë‹ˆë‹¤.
+	// @RequestMapping("animal")                                   ìµœì¢…ë²„ì „ì…ë‹ˆë‹¤.
+	
+	
+	
 	// <a href="${contextPath}/flower">
 	@RequestMapping("flower")
-	public String ²Éº¸·¯°¡±â() {
+	public String ê½ƒë³´ëŸ¬ê°€ê¸°() {
 		
-		// return "/gallery/flower"  ½½·¡½Ã(/)°¡ ÀÖ¾îµµ µË´Ï´Ù.
+		// return "/gallery/flower"   ìŠ¬ë˜ì‹œ(/)ê°€ ìˆì–´ë„ ë©ë‹ˆë‹¤.
 		
-		return "gallery/flower";  // ½½·¡½Ã(/)°¡ ¾ø¾îµµ µË´Ï´Ù.
+		return "gallery/flower";   // ìŠ¬ë˜ì‹œ(/)ê°€ ì—†ì–´ë„ ë©ë‹ˆë‹¤.
+		
 	}
+	
+	
 	
 	// <a href="${contextPath}/animal/flower">
 	@RequestMapping("animal/flower")
-	public String µ¿¹°º¸°í²Éº¸°í() {
-		// redirect: ´ÙÀ½¿¡´Â Ç×»ó ´Ù¸¥ URL MappingÀ» Àû¾î ÁØ´Ù.
+	public String ë™ë¬¼ë³´ê³ ê½ƒë³´ê³ () {
+		
+		// redirect: ë‹¤ìŒì—ëŠ” í•­ìƒ ë‹¤ë¥¸ URL Mappingì„ ì ì–´ ì¤€ë‹¤.
+		
 		return "redirect:/flower";
+		
 	}
 	
-	// <a href="${contextPath }/want/animal?filename=animal5.jsp">
+	
+	
+	// <a href="${contextPath}/want/animal?filename=animal5.jpg">
 	@RequestMapping("want/animal")
-	public String µ¿¹°5º¸±â(HttpServletRequest request) {
+	public String ë™ë¬¼5ë³´ê¸°(HttpServletRequest request) {
 		
 		System.out.println(request.getParameter("filename"));
 		
 		return "gallery/animal5";
+		
 	}
 	
 	
-	// <a href="${contextPath}/resource">
+	
+	// <a href="${contextPath}/response">
 	@RequestMapping("response")
-	public void ÀÀ´ä¸¸µé±â(HttpServletRequest request, HttpServletResponse response) {
+	public void ì‘ë‹µë§Œë“¤ê¸°(HttpServletRequest request, HttpServletResponse response) {
 		
-		// ÀÀ´äÀ» ¸¸µé¶§´Â returnÀ» ÇÏÁö ¾Ê´Â´Ù.
+		// ì‘ë‹µì„ ë§Œë“¤ ë•ŒëŠ” returnì„ í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		
 		try {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('µ¿¹° º¸·¯ °¡ÀÚ.');");
+			out.println("alert('ë™ë¬¼ ë³´ëŸ¬ ê°€ì.');");
 			out.println("location.href='" + request.getContextPath() + "/animal';");
 			out.println("</script>");
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 }

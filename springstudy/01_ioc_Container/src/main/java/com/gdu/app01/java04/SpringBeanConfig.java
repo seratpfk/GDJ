@@ -3,7 +3,7 @@ package com.gdu.app01.java04;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
-// java04/appCtx.xml¿¡ µî·ÏµÈ BeanÀ» °¡Á®¿À½Ã¿À.
+//java04/appCtx.xmlì— ë“±ë¡ëœ Beanì„ ê°€ì ¸ì˜¤ì‹œì˜¤.
 @ImportResource(value="java04/appCtx.xml")
 
 @Configuration

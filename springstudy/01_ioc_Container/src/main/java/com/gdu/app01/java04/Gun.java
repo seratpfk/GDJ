@@ -15,8 +15,8 @@ public class Gun {
 	
 	// info()
 	public void info() {
-		System.out.println("�𵨸�: " + model);
-		System.out.println("�Ѿ˼�: " + bullet);
+		System.out.println("모델명: " + model);
+		System.out.println("총알수: " + bullet);
 	}
 	
 }

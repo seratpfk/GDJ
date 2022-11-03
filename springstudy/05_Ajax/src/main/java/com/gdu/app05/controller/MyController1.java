@@ -20,31 +20,31 @@ public class MyController1 {
 	
 	@GetMapping("/")
 	public String index() {
-		return "index";  // index.jsp·Î forward
+		return "index";  // index.jspï¿½ï¿½ forward
 	}
 	
 	@GetMapping("member")
 	public String member() {
-		return "member";  // member.jsp·Î forward
+		return "member";  // member.jspï¿½ï¿½ forward
 	}
 	
 	
 	
 	// field
-	@Autowired  // Container(root-context.xml)¿¡¼­ Å¸ÀÔ(class)ÀÌ ÀÏÄ¡ÇÏ´Â beanÀ» °¡Á®¿À¼¼¿ä.
+	@Autowired  // Container(root-context.xml)ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½(class)ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ beanï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	private MemberService memberService;
 	
 	
 	
 	/*
 		@ResponseBody
-		¾È³ç. ³­ ajax Ã³¸®ÇÏ´Â ¸Þ¼Òµå¾ß.
-		³»°¡ ¹ÝÈ¯ÇÏ´Â °ªÀº ºä(JSP) ÀÌ¸§ÀÌ ¾Æ´Ï°í, ¾î¶² µ¥ÀÌÅÍ(text, json, xml µî)¾ß.
+		ï¿½È³ï¿½. ï¿½ï¿½ ajax Ã³ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½ï¿½.
+		ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½(JSP) ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Æ´Ï°ï¿½, ï¿½î¶² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(text, json, xml ï¿½ï¿½)ï¿½ï¿½.
 	*/
 	
 	@ResponseBody
 	@GetMapping(value="member/detail1"
-			  , produces="text/plain; charset=UTF-8")  // produces : ÀÀ´ä µ¥ÀÌÅÍ Å¸ÀÔ(MIME-TYPE)
+			  , produces="text/plain; charset=UTF-8")  // produces : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½(MIME-TYPE)
 	public String detail1(HttpServletRequest request, HttpServletResponse response) {
 		String str = memberService.execute1(request, response);
 		return str;
@@ -57,9 +57,9 @@ public class MyController1 {
 	          , produces="application/json; charset=UTF-8")
 	public Member detail2(@RequestParam(value="id") String id, @RequestParam(value="pw") String pw) {
 		Member member = memberService.execute2(id, pw);
-		return member;  // jacksonÀÌ member °´Ã¼¸¦ {"id":¾ÆÀÌµð, "pw":ÆÐ½º¿öµå} Çü½ÄÀÇ JSONÀ¸·Î ¹Ù²ã¼­ Àü´ÞÇÕ´Ï´Ù.
+		return member;  // jacksonï¿½ï¿½ member ï¿½ï¿½Ã¼ï¿½ï¿½ {"id":ï¿½ï¿½ï¿½Ìµï¿½, "pw":ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½} ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ JSONï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ã¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		/* 
-			Ãß¾ïÀÇ ÄÚµå(jacksonÀº ½º½º·Î º¯È¯ÇÏ±â ¶§¹®¿¡ °³¹ßÀÚ°¡ º¯È¯ ÄÚµå¸¦ ³ÖÀ» ÇÊ¿ä°¡ ¾øÀ½)
+			ï¿½ß¾ï¿½ï¿½ï¿½ ï¿½Úµï¿½(jacksonï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½È¯ ï¿½Úµå¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½)
 			JSONObject obj = new JSONObject(member);
 			return obj.toString();
 		*/

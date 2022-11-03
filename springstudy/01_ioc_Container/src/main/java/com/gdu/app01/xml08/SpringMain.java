@@ -8,7 +8,7 @@ public class SpringMain {
 	public static void main(String[] args) {
 
 	AbstractApplicationContext ctx = new GenericXmlApplicationContext("xml08/appCtx.xml");
-	Member member = ctx.getBean("member", Member.class); // "member"´Â appCtxÀÇ bean id="member"
+	Member member = ctx.getBean("member", Member.class); // "member"ëŠ” appCtxì˜ bean id="member"
 	member.info();
 	ctx.close();
 

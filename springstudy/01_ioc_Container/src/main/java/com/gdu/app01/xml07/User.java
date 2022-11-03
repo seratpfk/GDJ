@@ -15,7 +15,7 @@ public class User {
 	
 	// method
 	public void info() {
-		System.out.println("¾ÆÀÌµğ: " + id);
+		System.out.println("ì•„ì´ë””: " + id);
 		contact.info();
 	}
 	
