@@ -7,16 +7,16 @@
 <mapper namespace="mybatis.mapper.free">
 
 	<!-- 1. 학생목록 -->
-	<select id="selectAllStudents" resultType="Student">
-		SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
-		  FROM STUDENT
-		 ORDER BY STU_NO
+	<select id="selectAllFrees" resultType="Free">
+		SELECT FREENO, WRITER, TITLE, CONTENT, IP, HIT
+		  FROM FREE
+		 ORDER BY FREENO
 	</select>
 	
 	<!-- 2. 전체학생수 -->
-	<select id="selectAllStudentsCount" resultType="int">
+	<select id="selectAllFreesCount" resultType="int">
 		SELECT COUNT(*)
-		  FROM STUDENT
+		  FROM FREE
 	</select>
 	
 	<!-- 3. 전체평균 -->

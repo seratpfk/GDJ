@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,21 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
-import service.StudentAddService;
+import service.FreeAddService;
+import service.FreeService;
 import service.StudentDetailService;
-import service.StudentFindService;
 import service.StudentListService;
 import service.StudentModifyService;
 import service.StudentRemoveService;
-import service.StudentService;
 
-@WebServlet("/FreeController") // URL매핑값으로 *.do를 사용하시오.
+@WebServlet("*.do") // URL매핑값으로 *.do를 사용하시오.
 public class FreeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		// 요청 / 응답 인코딩
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -32,36 +32,35 @@ public class FreeController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String urlMapping = requestURI.substring(contextPath.length()); // urlMapping? 
 		
-		// StudentService 객체
-		StudentService service = null;
+		// FreeService 객체
+		FreeService service = null;
 		
 		// ActionForward 객체
 		ActionForward af = null;
 		
+		/*
 		// 요청에 따른 Service 선택
 		switch(urlMapping) {
-		case "/student/list.do":
-			service = new StudentListService();
+		case "/free/list.do":
+			service = new FreeListService();
 			break;
-		case "/student/add.do":
-			service = new StudentAddService();
+		case "/free/add.do":
+			service = new FreeAddService();
 			break;
-		case "/student/find.do":
-			service = new StudentFindService();
+		case "/free/remove.do":
+			service = new FreeRemoveService();
 			break;
-		case "/student/remove.do":
-			service = new StudentRemoveService();
+		case "/free/detail.do":
+			service = new FreeDetailService();
 			break;
-		case "/student/detail.do":
-			service = new StudentDetailService();
-			break;
-		case "/student/modify.do":
-			service = new StudentModifyService();
+		case "/free/modify.do":
+			service = new FreeModifyService();
 			break;	
-		case "/student/write.do":
-			af = new ActionForward("/student/write.jsp", false);
+		case "/free/write.do":
+			af = new ActionForward("/free/write.jsp", false);
 			break;
 		}
+		*/
 		
 		// 선택된 Service 실행
 		try {
