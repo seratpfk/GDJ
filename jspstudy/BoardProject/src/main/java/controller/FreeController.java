@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
 import service.FreeAddService;
+import service.FreeDetailService;
+import service.FreeListService;
+import service.FreeModifyService;
+import service.FreeRemoveService;
 import service.FreeService;
-import service.StudentDetailService;
-import service.StudentListService;
-import service.StudentModifyService;
-import service.StudentRemoveService;
 
 @WebServlet("*.do") // URL매핑값으로 *.do를 사용하시오.
 public class FreeController extends HttpServlet {
@@ -22,7 +22,7 @@ public class FreeController extends HttpServlet {
      
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+         
 		// 요청 / 응답 인코딩
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -38,29 +38,27 @@ public class FreeController extends HttpServlet {
 		// ActionForward 객체
 		ActionForward af = null;
 		
-		/*
+	
 		// 요청에 따른 Service 선택
 		switch(urlMapping) {
-		case "/free/list.do":
+		case "/BoardProject/list.do":
 			service = new FreeListService();
 			break;
-		case "/free/add.do":
+		case "/BoardProject/add.do":
 			service = new FreeAddService();
 			break;
-		case "/free/remove.do":
+		case "/BoardProject/remove.do":
 			service = new FreeRemoveService();
 			break;
-		case "/free/detail.do":
+		case "/BoardProject/detail.do":
 			service = new FreeDetailService();
 			break;
-		case "/free/modify.do":
+		case "/BoardProject/modify.do":
 			service = new FreeModifyService();
 			break;	
-		case "/free/write.do":
-			af = new ActionForward("/free/write.jsp", false);
-			break;
+		case "/BoardProject/insert.do":
+			af = new ActionForward("/BoardProject/insert.jsp", false);
 		}
-		*/
 		
 		// 선택된 Service 실행
 		try {

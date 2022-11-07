@@ -9,59 +9,32 @@ import common.ActionForward;
 import domain.Free;
 import repository.FreeDAO;
 
-public class StudentModifyService implements FreeService {
+public class FreeModifyService implements FreeService {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		// 요청 파라미터
-		int stuNo = Integer.parseInt(request.getParameter("stuNo"));
-		String name = request.getParameter("name");
-		int kor = Integer.parseInt(request.getParameter("kor"));
-		int eng = Integer.parseInt(request.getParameter("eng"));
-		int math = Integer.parseInt(request.getParameter("math"));
-		
-		// 파생값
-		double ave = (kor + eng + math) / 3.0;
-		String grade;
-		switch((int)(ave / 10)) {
-		case 10: case 9: grade = "A"; break;
-		case 8: grade = "B"; break;
-		case 7: grade = "C"; break;
-		case 6: grade = "D"; break;
-		default: grade = "F";
-		}
-		
-		Free free = new Free();
-		/*
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+
 		// DB로 보낼 Student student 생성
 		Free student = Free.builder()
-				.stuNo(stuNo)
-				.name(name)
-				.kor(kor)
-				.eng(eng)
-				.math(math)
-				.ave(ave)
-				.grade(grade)
+				.title(title)
+				.content(content)
 				.build();
-		*/
 		
 		// DB로 Student student 보내기(수정)
-		int result = FreeDAO.getInstance().updateStudent(free);
+		int result = FreeDAO.getInstance().updateFree(free);
 		
 		// 수정 성공/실패
 		PrintWriter out = response.getWriter();
 		if(result > 0) {
 			out.println("<script>");
-			out.println("alert('학생 정보가 수정되었습니다.')");
-			out.println("location.href='" + request.getContextPath() + "/free/detail.do?stuNo=" + stuNo + "'");
+			out.println("alert('게시물이 수정되었습니다.')");
+			out.println("location.href='" + request.getContextPath() + "/BoardProject/detail.do?freeNo=" + freeNo + "'");
 			out.println("</script>");
-		} else {
-			out.println("<script>");
-			out.println("alert('학생 정보 수정이 실패했습니다.')");
-			out.println("history.back()");
-			out.println("</script>");
-		}
+		} 
 		out.close();
 
 		return null; // Service를 통해서 직접 응답했기 때문에 컨트롤러로 null을 반환

@@ -14,9 +14,9 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 	
-	<!-- domain.Student to student -->
+	<!-- domain.Free to free -->
 	<typeAliases>
-		<typeAlias type="domain.Student" alias="Student"></typeAlias>
+		<typeAlias type="domain.Free" alias="Free"></typeAlias>
 	</typeAliases>
 	
   <environments default="development">
@@ -32,7 +32,7 @@
   </environments>
   
   <mappers>
-    <mapper resource="mybatis/mapper/student.xml"/>
+    <mapper resource="mybatis/mapper/free.xml"/>
   </mappers>
   
 </configuration>

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.ActionForward;
 import repository.FreeDAO;
 
-public class StudentListService implements FreeService {
+public class FreeListService implements FreeService {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -14,13 +14,11 @@ public class StudentListService implements FreeService {
 		FreeDAO dao = FreeDAO.getInstance();
 		
 		// request에 필요한 정보 저장하기
-		request.setAttribute("frees", dao.selectAllStudents());
-		request.setAttribute("count", dao.selectAllStudentsCount());
-		request.setAttribute("average", dao.selectAllStudentsAverage());
+		request.setAttribute("frees", dao.selectAllFrees());
 		
 		// student/list.jsp로 포워딩
 		
-		return new ActionForward("/free/list.jsp", false);
+		return new ActionForward("/BoardProject/list.do", false);
 	}
 
 }

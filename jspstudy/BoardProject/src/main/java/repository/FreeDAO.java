@@ -38,33 +38,25 @@ public class FreeDAO {
 	String mapper = "mybatis.mapper.free.";
 	
 	// 1. 학생목록
-	public List<Free> selectAllStudents() {
+	public List<Free> selectAllFrees() {
 		SqlSession ss = factory.openSession();
-		List<Free> students = ss.selectList(mapper + "selectAllStudents");
+		List<Free> frees = ss.selectList(mapper + "selectAllFrees");
 		ss.close();
-		return students;
+		return frees;
 	}
 	
 	// 2. 전체학생수
-	public int selectAllStudentsCount() {
+	public int selectAllFreesCount() {
 		SqlSession ss = factory.openSession();
-		int count = ss.selectOne(mapper + "selectAllStudentsCount");
+		int count = ss.selectOne(mapper + "selectAllFreesCount");
 		ss.close();
 		return count;
 	}
 	
-	// 3. 전체평균
-	public double selectAllStudentsAverage() {
-		SqlSession ss = factory.openSession();
-		double average = ss.selectOne(mapper + "selectAllStudentsAverage");
-		ss.close();
-		return average;
-	}
-	
 	// 4. 학생등록
-	public int insertStudent(Free free) {
+	public int insertFree(Free free) {
 		SqlSession ss = factory.openSession(false);
-		int result = ss.insert(mapper + "insertStudent", free);
+		int result = ss.insert(mapper + "insertFree", free);
 		if(result > 0) {
 			ss.commit();
 		}
@@ -72,34 +64,10 @@ public class FreeDAO {
 		return result;
 	}
 	
-	// 5. 평균범위조회
-	public List<Free> selectStudentsByAve(Map<String, Double> map) {
-		SqlSession ss = factory.openSession();
-		List<Free> frees = ss.selectList(mapper + "selectStudentsByAve", map);
-		ss.close();
-		return frees;
-	}
-	
-	// 6. 평균범위조회 : 개수
-	public int selectStudentsByAveCount(Map<String, Double> map) {
-		SqlSession ss = factory.openSession();
-		int count = ss.selectOne(mapper + "selectStudentsByAveCount", map);
-		ss.close();
-		return count;
-	}
-	
-	// 7. 평균범위조회 : 평균
-	public double selectStudentsByAveAverage(Map<String, Double> map) {
-		SqlSession ss = factory.openSession();
-		double average = ss.selectOne(mapper + "selectStudentsByAveAverage", map);
-		ss.close();
-		return average;
-	}
-	
 	// 8. 학생삭제
-	public int deleteStudent(int stuNo) {
+	public int deleteFree(int freeNo) {
 		SqlSession ss = factory.openSession(false);
-		int result = ss.delete(mapper + "deleteStudent", stuNo);
+		int result = ss.delete(mapper + "deleteFree", freeNo);
 		if(result > 0) {
 			ss.commit();
 		}
@@ -108,17 +76,17 @@ public class FreeDAO {
 	}
 	
 	// 9. 학생상세보기
-	public Free selectStudentByNo(int stuNo) {
+	public Free selectFreeByNo(int freeNo) {
 		SqlSession ss = factory.openSession();
-		Free free = ss.selectOne(mapper + "selectStudentByNo", stuNo);
+		Free free = ss.selectOne(mapper + "selectFreeByNo", freeNo);
 		ss.close();
 		return free;
 	}
 	
 	// 10. 학생수정
-	public int updateStudent(Free free) {
+	public int updateFree(Free free) {
 		SqlSession ss = factory.openSession(false);
-		int result = ss.update(mapper + "updateStudent", free);
+		int result = ss.update(mapper + "updateFree", free);
 		if(result > 0) {
 			ss.commit();
 		}
@@ -127,9 +95,9 @@ public class FreeDAO {
 	}
 	
 	// 11. TOP3
-	public List<Free> selectStudentsTop3() {
+	public List<Free> selectFreesTop3() {
 		SqlSession ss = factory.openSession();
-		List<Free> top3 = ss.selectList(mapper + "selectStudentsTop3");
+		List<Free> top3 = ss.selectList(mapper + "selectFreesTop3");
 		ss.close();
 		return top3;
 	}
