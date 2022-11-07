@@ -53,6 +53,8 @@ public class FreeDAO {
 		return count;
 	}
 	
+	
+	
 	// 4. 학생등록
 	public int insertFree(Free free) {
 		SqlSession ss = factory.openSession(false);
@@ -76,7 +78,7 @@ public class FreeDAO {
 	}
 	
 	// 9. 학생상세보기
-	public Free selectFreeByNo(int freeNo) {
+	public Free selectFreeByNo(long freeNo) {
 		SqlSession ss = factory.openSession();
 		Free free = ss.selectOne(mapper + "selectFreeByNo", freeNo);
 		ss.close();

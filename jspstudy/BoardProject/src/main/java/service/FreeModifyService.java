@@ -19,7 +19,7 @@ public class FreeModifyService implements FreeService {
 		String content = request.getParameter("content");
 
 		// DB로 보낼 Student student 생성
-		Free student = Free.builder()
+		Free free = Free.builder()
 				.title(title)
 				.content(content)
 				.build();
@@ -32,7 +32,7 @@ public class FreeModifyService implements FreeService {
 		if(result > 0) {
 			out.println("<script>");
 			out.println("alert('게시물이 수정되었습니다.')");
-			out.println("location.href='" + request.getContextPath() + "/BoardProject/detail.do?freeNo=" + freeNo + "'");
+			out.println("location.href='\" + request.getContextPath() + \"/free/list.do'");
 			out.println("</script>");
 		} 
 		out.close();

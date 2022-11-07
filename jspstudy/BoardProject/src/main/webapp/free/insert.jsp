@@ -10,7 +10,7 @@
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <script>
 	$(document).ready(function(){
-	    $('#frm_write').submit(function(event){
+	    $('#frm_insert').submit(function(event){
 	       if($('#title').val() == ''){
 	          alert('제목은 필수입니다.');
 	          $('#title').focus();
@@ -32,7 +32,7 @@
 
 	<h1>자유게시판 게시글 작성화면</h1>
 	<div>
-		<form id="frm_write" method="POST" action="${contextPath}/free/add.do">
+		<form id="frm_insert" method="POST" action="${contextPath}/free/add.do">
 			<div>
 				<input type="text" placeholder="작성자" id="writer" name="writer">
 			</div>

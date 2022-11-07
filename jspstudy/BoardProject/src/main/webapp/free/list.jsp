@@ -12,7 +12,7 @@
 <body>
 
 	<div>
-		<a href="${contextPath}/free/insert">작성하러 가기</a>
+		<a href="${contextPath}/free/insert.jsp">작성하러 가기</a>
 	</div>
 
 	<hr>
@@ -32,10 +32,10 @@
 				<c:forEach items="${frees}" var="free">
 					<tr>
 						<td>${free.freeNo}</td>
-						<td><a href="${contextPath}/free/detail?freeNo=${free.freeNo}">${free.title}</a></td>
+						<td><a href="${contextPath}/free/detail.do?freeNo=${free.freeNo}">${free.title}</a></td>
 						<td>${free.writer}</td>
 						<td>${free.hit}</td>
-						<td><a href="${contextPath}/free/remove?freeNo=${free.freeNo}">X</a></td> 
+						<td> <a id="remove_link" href="${contextPath}/free/remove.do?freeNo=${free.freeNo}">X</a></td> 
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -35,7 +35,7 @@ public class FreeAddService implements FreeService {
 		if(result > 0) {
 			out.println("<script>");
 			out.println("alert('게시글이 등록되었습니다.')");
-			out.println("location.href='" + request.getContextPath() + "/BoardProject/list.do'");
+			out.println("location.href='" + request.getContextPath() + "/free/list.do'");
 			out.println("</script>");
 		} 
 		out.close();

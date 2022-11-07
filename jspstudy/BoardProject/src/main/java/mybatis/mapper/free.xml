@@ -8,7 +8,7 @@
 
 	<!-- 1. 학생목록 -->
 	<select id="selectAllFrees" resultType="Free">
-		SELECT FREENO, TITLE, WRITER, HIT, IP
+		SELECT FREENO, TITLE, WRITER, HIT
 		  FROM FREE
 		 ORDER BY FREENO
 	</select>
@@ -22,9 +22,9 @@
 	<!-- 4. 학생등록 -->
 	<insert id="insertFree" parameterType="Free">
 		INSERT INTO FREE
-			(FREENO, WRITER, TITLE, CONTENT)
+			(FREENO, WRITER, TITLE, CONTENT, IP, HIT)
 		VALUES
-			(STUDENT_SEQ.NEXTVAL, #{writer}, #{title}, #{content})
+			(STUDENT_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, '127.0.0.1', 5)
 	</insert>
 	
 	<!-- 8. 학생삭제 -->
@@ -36,7 +36,7 @@
 	
 	<!-- 9. 학생상세보기 -->
 	<select id="selectFreeByNo" parameterType="Long" resultType="free">
-		SELECT FREENO, WRITER, IP, HIT, TITLE, CONTENT
+		SELECT FREENO, WRITER, TITLE, IP, HIT, CONTENT
 		  FROM FREE
 		 WHERE FREENO = #{freeNo}
 	</select>
