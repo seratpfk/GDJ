@@ -11,18 +11,31 @@ import com.gdu.app11.service.EmpService;
 
 @Controller
 public class EmpController {
-	
+
 	@Autowired
 	private EmpService empService;
-
+	
 	@GetMapping("/")
 	public String welcome() {
 		return "index";
 	}
 	
-	@GetMapping("/emp/list") // emp앞의 슬래시는 생략 가능
+	@GetMapping("/emp/list")
 	public String list(HttpServletRequest request, Model model) {
 		empService.findAllEmployees(request, model);
 		return "employee/list";
 	}
+	
+	@GetMapping("/emp/search")
+	public String search(HttpServletRequest request, Model model) {
+		empService.findEmployees(request, model);
+		return "employee/list";
+	}
+	
+	
+	
+	
+	
+	
+	
 }

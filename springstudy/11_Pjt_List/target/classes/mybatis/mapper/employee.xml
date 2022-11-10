@@ -3,8 +3,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  
+
 <mapper namespace="com.gdu.app11.mapper.EmpMapper">
 
 	<!-- employees와 departments의 조인을 위한 resultMap -->
@@ -27,21 +26,54 @@
 		<result column="MANAGER_ID" property="managerId" />
 		<collection resultMap="DeptMap" property="deptDTO"></collection>
 	</resultMap>
-	
-	
+
 	<select id="selectAllEmployeesCount" resultType="int">
 		SELECT COUNT(*)
 		  FROM EMPLOYEES
 	</select>
 	
-	<!-- 입사순으로 정렬한 뒤 -> rownum 붙이고 -> 11-20 가져오기 -->
-	<select id="selectEmployeesByPage" resultMap="EmpMap">  <!-- parameterType 생략. int가 2개기 때문에 -->
+	<select id="selectEmployeesByPage" parameterType="Map" resultMap="EmpMap">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
 		          FROM (SELECT E.*, D.DEPARTMENT_NAME, D.LOCATION_ID
-		          		  FROM EMPLOYEES D INNER JOIN EMPLOYEES E
-		          		    ON D.DEAPRTMENT_ID = E.DEPARTMENT_ID
-		        		 ORDER BY HIRE_DATE DESC) A) B
-		 WHERE B.RN BETWEEN #{param1} AND #{param2} <!-- EmpMapper의 int begin, int end -->
+		                  FROM DEPARTMENTS D RIGHT OUTER JOIN EMPLOYEES E
+		                    ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
+		                  ORDER BY HIRE_DATE DESC) A) B
+		 WHERE B.RN BETWEEN #{begin} AND #{end}		 
 	</select>
+	
+	<select id="selectFindEmployeesCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM EMPLOYEES E
+		<where>
+		  <if test="column=='EMPLOYEE_ID' or column=='E.DEPARTMENT_ID'">${column} = #{query}</if>
+		  <if test="column=='LAST_NAME' or column=='FIRST_NAME' or column=='PHONE_NUMBER'">${column} LIKE '%' || #{query} || '%'</if>
+		  <if test="column=='HIRE_DATE'">${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')</if>
+		  <if test="column=='SALARY'">${column} BETWEEN #{start} AND #{stop}</if>
+		</where>
+		<!--
+			WHERE #{column} = #{query}   #{}는 작은 따옴표(')로 묶어서 값을 치환
+	     	WHERE 'EMPLOYEE_ID' = '150'  잘못된 사용
+	     	
+	     	WHERE ${column} = #{query}   ${}는 그냥 치환
+			WHERE EMPLOYEE_ID = '150'    정상 동작
+		-->
+	</select>
+	
+	<select id="selectFindEmployees" parameterType="Map" resultMap="EmpMap">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT E.*, D.DEPARTMENT_NAME, D.LOCATION_ID
+		                  FROM DEPARTMENTS D RIGHT OUTER JOIN EMPLOYEES E
+		                    ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
+		               <where>
+		                   <if test="column=='EMPLOYEE_ID' or column=='E.DEPARTMENT_ID'">${column} = #{query}</if>
+		                   <if test="column=='LAST_NAME' or column=='FIRST_NAME' or column=='PHONE_NUMBER'">${column} LIKE '%' || #{query} || '%'</if>
+		                   <if test="column=='HIRE_DATE'">${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')</if>
+		                   <if test="column=='SALARY'">${column} BETWEEN #{start} AND #{stop}</if>
+		               </where>
+		                 ORDER BY HIRE_DATE DESC) A) B
+		 WHERE B.RN BETWEEN #{begin} AND #{end}
+	</select>
+
 </mapper>

@@ -8,10 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class DeptDTO {
-
-	private int departmentId; // 이름을 줄이면 mybatis가 인식을 못함.
+	private int departmentId;
 	private String departmentName;
 	private int managerId;
 	private int locationId;
-	
 }
