@@ -102,6 +102,45 @@ public class EmpServiceImpl implements EmpService {
 		
 	}
 	
+	@Override
+	public Map<String, Object> findAutoCompleteList(HttpServletRequest request) {
+		
+		String param = request.getParameter("param");
+		
+		List<EmpDTO> list = empMapper.selectAutoCompleteList(param);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		if(list.size() == 0) {
+			result.put("status", 400);
+			result.put("list", null);
+		} else {
+			result.put("status", 200);
+			result.put("list", list);
+			
+		}
+		return result;
+		
+		/*
+			Map<> result가 jackson에 의해서 아래 JSON으로 자동 변경된다.
+			result = {
+				"status": 200,  => result.status / result["status"]
+				"list": [
+					{
+						"employeeId": null,
+						"firstName": null,
+						"lastName": null,
+						...
+						"email": "MHARISTE" => result.list[0].email
+					},
+					{
+						...
+					},
+					...
+				]
+			}
+		 */
+	}
+	
 	
 	
 	
