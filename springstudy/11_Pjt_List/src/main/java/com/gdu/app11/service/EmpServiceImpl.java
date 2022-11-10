@@ -64,7 +64,6 @@ public class EmpServiceImpl implements EmpService {
 		String start = request.getParameter("start");
 		String stop = request.getParameter("stop");
 		
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("column", column);
 		map.put("query", query);
@@ -96,7 +95,6 @@ public class EmpServiceImpl implements EmpService {
 		case "SALARY":
 			path = request.getContextPath() + "/emp/search?column=" + column + "&start=" + start + "&stop=" + stop;
 			break;
-			
 		}
 		model.addAttribute("paging", pageUtil.getPaging(path));
 		
@@ -105,9 +103,14 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public Map<String, Object> findAutoCompleteList(HttpServletRequest request) {
 		
+		String target = request.getParameter("target");
 		String param = request.getParameter("param");
 		
-		List<EmpDTO> list = empMapper.selectAutoCompleteList(param);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("param", param);
+		
+		List<EmpDTO> list = empMapper.selectAutoCompleteList(map);
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		if(list.size() == 0) {
@@ -116,39 +119,36 @@ public class EmpServiceImpl implements EmpService {
 		} else {
 			result.put("status", 200);
 			result.put("list", list);
-			
 		}
+		
+		switch(target) {
+		case "FIRST_NAME": result.put("target", "firstName"); break;
+		case "LAST_NAME": result.put("target", "lastName"); break;
+		case "EMAIL": result.put("target", "email"); break;
+		}
+		
 		return result;
 		
 		/*
 			Map<> result가 jackson에 의해서 아래 JSON으로 자동 변경된다.
 			result = {
-				"status": 200,  => result.status / result["status"]
+				"status": 200,               => result.status / result["status"]
 				"list": [
 					{
 						"employeeId": null,
 						"firstName": null,
 						"lastName": null,
 						...
-						"email": "MHARISTE" => result.list[0].email
+						"email": "MHARTSTE"  => result.list[0].email
 					},
 					{
 						...
 					},
 					...
-				]
+				],
+				"target": "email"            => result.target
 			}
-		 */
+		*/
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
