@@ -15,38 +15,48 @@ import com.gdu.notice.service.NoticeService;
 @Controller
 public class NoticeController {
 
-	@Autowired
-	// NoticeServiceImpl클래스의 private NoticeMapper mapper;
-	private NoticeService noticeService;
-	
-	// 웰컴파일
-	@GetMapping("/")
-	public String index() {
-		return "index";
-	}
-	
-	@GetMapping("/ntc/list") // model을 최초선언하는 곳은 컨트롤러
-	public String list(Model model) {
-		noticeService.findAllNotices(model);
-		return "notice/list";
-	}
-	
-	@GetMapping("/ntc/write")
-	public String wirte() {
-		return "notice/write";
-	}
-	
-	@PostMapping("/ntc/add")
-    public void add(HttpServletRequest request, HttpServletResponse response) {
-       noticeService.addNotice(request, response);
-    }
-	
-	@GetMapping("/ntc/detail")  // /ntc/detail?noticeNo=1
-	public String detail(@RequestParam(value="noticeNo", required=false, defaultValue="0") int noticeNo, Model model) { // 파라미터이름을 value에 적는다. 
-		// required 하는이유: /ntc/detail처럼 파라미터를 안해도 400오류가 안뜸.
-		// defaultValue : 큰따옴표 필수. 번호가 없으면 0번을 사용하겠다.
-		// Model의 최초 선언은 컨트롤러에서 해야 한다.
-		noticeService.findNoticeByNo(noticeNo, model);
-		return "notice/detail";
-	}
+   @Autowired
+   private NoticeService noticeService;
+   
+   @GetMapping("/")
+   public String index() {
+      return "index";
+   }
+   
+   @GetMapping("/ntc/list")
+   public String list(Model model) {
+      noticeService.findAllNotices(model);
+      return "notice/list";
+   }
+   
+   @GetMapping("/ntc/write")
+   public String write() {
+      return "notice/write";
+   }
+   
+   @PostMapping("/ntc/add")
+   public void add(HttpServletRequest request, HttpServletResponse response) {
+      noticeService.addNotice(request, response);
+   }
+   
+   
+   @GetMapping("/ntc/detail") // /ntc/detail?noticeNo=1
+   public String detail(@RequestParam(value="noticeNo" , required=false, defaultValue="0") int noticeNo, Model model ) {
+      noticeService.findNoticeByNo(noticeNo, model);
+      
+      return "notice/detail";
+   }
+   
+   @PostMapping("/ntc/modify")
+   public void modify(HttpServletRequest request, HttpServletResponse response) {
+      noticeService.modifyNotice(request, response);
+   }
+   
+   @PostMapping("/ntc/remove")
+   public void remove(HttpServletRequest request, HttpServletResponse response) {
+      noticeService.removeNotice(request, response);
+      
+   }
+   
+   
 }
