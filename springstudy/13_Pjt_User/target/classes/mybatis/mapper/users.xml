@@ -12,9 +12,15 @@
 		 WHERE ID = #{id}
 	</select>
 	
-	<select id="selectRetireUserById" parameterType="String" resultType="RetireUserDTO">
+	<select id="selectUserByEmail" parameterType="String" resultType="UserDTO">
 		SELECT ID
-          FROM RETIRE_USERS
-         WHERE ID = #{id}
+		  FROM USERS
+		 WHERE ID = #{id}
+	</select>
+	
+	<select id="selectRetireUserById" parameterType="String" resultType="RetireUserDTO">
+		SELECT EMAIL
+          FROM USERS
+         WHERE EMAIL = #{email}
 	</select>
 </mapper>

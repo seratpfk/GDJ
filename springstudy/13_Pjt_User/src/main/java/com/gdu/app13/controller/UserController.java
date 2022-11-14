@@ -42,4 +42,10 @@ public class UserController {
 	public Map<String, Object> checkReduceId(String id){
 		return userService.isReduceId(id);
 	}
+	
+	@ResponseBody // ajax가능
+	@GetMapping(value="/user/checkReduceEmail", produces=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> checkReduceEmail(String email){
+		return userService.isReduceEmail(email);
+	}
 }

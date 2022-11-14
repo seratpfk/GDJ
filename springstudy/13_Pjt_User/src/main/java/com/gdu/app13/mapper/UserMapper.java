@@ -9,4 +9,5 @@ import com.gdu.app13.domain.UserDTO;
 public interface UserMapper {
 	public UserDTO selectUserById(String id);
 	public RetireUserDTO selectRetireUserById(String id);
+	public UserDTO selectUserByEmail(String email);
 }
