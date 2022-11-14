@@ -29,23 +29,35 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/join/write")
-	public String joinWrite(@RequestParam(required = false) String location
-						  , @RequestParam(required = false) String promotion
-						  , Model model) {
+	public String joinWrite(@RequestParam(required=false) String location
+			              , @RequestParam(required = false) String promotion
+			              , Model model) {
 		model.addAttribute("location", location);
 		model.addAttribute("promotion", promotion);
 		return "user/join";
 	}
 	
-	@ResponseBody // ajax가능
+	@ResponseBody
 	@GetMapping(value="/user/checkReduceId", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> checkReduceId(String id){
 		return userService.isReduceId(id);
 	}
 	
-	@ResponseBody // ajax가능
+	@ResponseBody
 	@GetMapping(value="/user/checkReduceEmail", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> checkReduceEmail(String email){
 		return userService.isReduceEmail(email);
 	}
+	
+	@ResponseBody
+	@GetMapping(value="/user/sendAuthCode", produces=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> sendAuthCode(String email){
+		return userService.sendAuthCode(email);
+	}
+	
+	
+	
+	
+	
+	
 }
