@@ -25,11 +25,10 @@ public class StepServiceImpl implements StaffService {
 	public ResponseEntity<String> addStaff(StaffDTO staff) {
 		// staff에 salary 넣기 : 기획부 1000, 개발부 2000, 영업부 3000, 나머지 4000
 		try {
-			staff.setSalary(1000);
 			switch(staff.getDept()) {
-			case "기획부": staff.setSalary(1000); break;
-			case "개발부": staff.setSalary(2000); break;
-			case "영업부": staff.setSalary(3000); break;
+			case "기획부": staff.setSalary(5000); break;
+			case "개발부": staff.setSalary(6000); break;
+			case "영업부": staff.setSalary(7000); break;
 			default: staff.setSalary(4000);
 			}
 			staffMapper.insertStaff(staff);
@@ -38,4 +37,11 @@ public class StepServiceImpl implements StaffService {
 			return new ResponseEntity<String>("사원 등록이 실패했습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
+	@Override
+	public StaffDTO getFindStaffList(String sno) {
+			return staffMapper.selectFindStaffs(sno);
+	}
+	
 }

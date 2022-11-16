@@ -6,6 +6,13 @@
 
 <mapper namespace="com.gdu.staff.mapper.StaffMapper">
 
+	<resultMap type="StaffDTO" id="StaffMap">
+		<result column="DEPARTMENT_ID" property="departmentId" />
+		<result column="DEPARTMENT_NAME" property="departmentName" />
+		<result column="MANAGER_ID" property="managerId" />
+		<result column="LOCATION_ID" property="locationId" />
+	</resultMap>
+
 	<select id="selectStaffList" resultType="StaffDTO">
 		SELECT SNO, NAME, DEPT, SALARY
 		  FROM STAFF
@@ -18,5 +25,24 @@
 		VALUES
 			(#{sno}, #{name}, #{dept}, #{salary})
 	</insert>
+	
+ 
+	<select id="selectFindStaffs" resultType="StaffDTO">
+		SELECT SNO, NAME, DEPT, SALARY
+		  FROM STAFF
+		 ORDER BY SNO
+	</select>
+
+	
+	<!-- 
+	<select id="selectFindStaffs" resultMap="StaffDTO">
+		SELECT SNO, NAME, DEPT, SALARY
+		  FROM STAFF
+		 WHERE SNO = #{sno}
+		 ORDER BY SNO
+	</select>
+	 -->
+	
+	
 	
 </mapper>

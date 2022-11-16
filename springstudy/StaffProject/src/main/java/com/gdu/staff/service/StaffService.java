@@ -9,5 +9,5 @@ import com.gdu.staff.domain.StaffDTO;
 public interface StaffService {
 	public List<StaffDTO> getStaffList();
 	public ResponseEntity<String> addStaff(StaffDTO staff);
-	
+	public StaffDTO getFindStaffList(String sno);
 }

@@ -13,6 +13,7 @@
 	$(function(){
 		fn_list();
 		fn_add();
+		fn_search();
 	});
 	
 	function fn_list(){
@@ -72,6 +73,30 @@
 			});
 		});
 	}
+	
+	
+	function fn_search(){
+		$('#btn_search').click(function(){
+		$.ajax({
+			type: 'get',
+			url: '${contextPath}/query.json',
+			data: 'sno=' + $('#query').val(),
+			dataType: 'json',
+			success: function(resData){
+				$('#tb').empty();
+					var tr = '<tr>';
+					tr += '<td>' + resData.sno + '</td>';
+					tr += '<td>' + resData.name + '</td>';
+					tr += '<td>' + resData.dept + '</td>';
+					tr += '<td>' + resData.salary + '</td>';
+					tr += '</tr>';
+					$('#tb').append(tr);
+					
+				}
+			});
+		});
+	}
+	
 
 </script>
 </head>
@@ -97,6 +122,17 @@
  		<input type="text" id="dept" name="dept" placeholder="부서명">
  		<input type="button" value="등록" id="btn_add">
  	</form>
+ 	
+ 	<hr>
+ 	
+ 	<h3>사원조회</h3>
+ 	<form id="frm_search">
+ 		<input type="text" id="sno" name="sno" placeholder="사원번호입력">
+ 		<input type="button" value="조회" id="btn_search">
+ 		<input type="button" value="전체" id="btn_list">
+ 	</form>
+ 	
+ 	<hr>
  
 	 <h3>사원목록</h3>
 	 <table border="1">
@@ -111,6 +147,7 @@
 	 	<tbody id="tb">
 	 	</tbody>
 	 </table>
+	 
 	 
 
 </body>

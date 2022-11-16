@@ -2,6 +2,8 @@ package com.gdu.staff.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -54,6 +56,13 @@ public class StaffController {
 	}
 	*/
 	
+	
+	@ResponseBody
+	@GetMapping(value="/query.json", produces="application/json; charset=UTF-8")
+	public StaffDTO query(HttpServletRequest request) {
+		String sno = request.getParameter("sno");
+		return staffService.getFindStaffList(sno);
+	}
 	
 	
 }
