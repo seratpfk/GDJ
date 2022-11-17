@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -60,13 +59,12 @@ public class UserController {
 		return userService.sendAuthCode(email);
 	}
 	
-	
 	@PostMapping("/user/join")
 	public void join(HttpServletRequest request, HttpServletResponse response) {
 		userService.join(request, response);
 	}
 	
-	@GetMapping("/user/retire")
+	@PostMapping("/user/retire")
 	public void retire(HttpServletRequest request, HttpServletResponse response) {
 		userService.retire(request, response);
 	}
@@ -75,8 +73,10 @@ public class UserController {
 	public String loginForm(HttpServletRequest request, Model model) {
 		
 		// 요청 헤더 referer : 이전 페이지의 주소가 저장
-		model.addAttribute("url", request.getHeader("referer")); // 로그인 후 되돌아 갈 주소 url
+		model.addAttribute("url", request.getHeader("referer"));  // 로그인 후 되돌아 갈 주소 url
+		
 		return "user/login";
+		
 	}
 	
 	@PostMapping("/user/login")
@@ -86,9 +86,39 @@ public class UserController {
 	
 	@GetMapping("/user/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
-		request.getSession().invalidate();
+		userService.logout(request, response);
 		return "redirect:/";
 	}
-
-	// 응답만들었으면 void 안만들었으면 string(Service 참고)
+	
+	@GetMapping("/user/check/form")
+	public String requiredLogin_checkForm() {
+		return "user/check";
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/user/check/pw", produces="application/json")
+	public Map<String, Object> requiredLogin_checkPw(HttpServletRequest request) {
+		return userService.confirmPassword(request);
+	}
+	
+	@GetMapping("/user/mypage")
+	public String requiredLogin_mypage() {
+		return "user/mypage";
+	}
+	
+	@PostMapping("/user/modify/pw")
+	public void requiredLogin_modifyPw(HttpServletRequest request, HttpServletResponse response) {
+		userService.modifyPassword(request, response);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
