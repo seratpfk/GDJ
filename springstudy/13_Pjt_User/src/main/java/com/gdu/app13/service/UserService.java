@@ -24,5 +24,8 @@ public interface UserService {
 	public void sleepUserHandle();  // SleepUserScheduler에서 호출
 	public SleepUserDTO getSleepUserById(String id);
 	public void restoreUser(HttpServletRequest request, HttpServletResponse response);
-	public String getNaverLoginApiURL(HttpServletRequest request);
+	public String getNaverLoginApiURL(HttpServletRequest request);  // 네이버로그인-1
+	public UserDTO getNaverLoginTokenNProfile(HttpServletRequest request);  // 네이버 로그인-2
+
+	
 }
