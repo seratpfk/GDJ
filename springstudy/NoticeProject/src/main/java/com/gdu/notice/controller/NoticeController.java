@@ -25,6 +25,7 @@ public class NoticeController {
    
    @GetMapping("/ntc/list")
    public String list(Model model) {
+	   
       noticeService.findAllNotices(model);
       return "notice/list";
    }

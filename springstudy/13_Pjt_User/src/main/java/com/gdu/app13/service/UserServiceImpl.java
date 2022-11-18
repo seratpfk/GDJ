@@ -2,6 +2,9 @@ package com.gdu.app13.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.security.SecureRandom;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gdu.app13.domain.RetireUserDTO;
+import com.gdu.app13.domain.SleepUserDTO;
 import com.gdu.app13.domain.UserDTO;
 import com.gdu.app13.mapper.UserMapper;
 import com.gdu.app13.util.SecurityUtil;
@@ -529,9 +533,83 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	
+	@Transactional
+	@Override
+	public void sleepUserHandle() {
+		int insertCount = userMapper.insertSleepUser();
+		if(insertCount > 0) {
+			userMapper.deleteUserForSleep();
+		}
+		
+	}
 	
 	
+	@Override
+	public SleepUserDTO getSleepUserById(String id) {
+		return userMapper.selectSleepUserById(id);
+	}
 	
-	
+	@Transactional   // 휴면처리 : insert와 delete 동시 진행되기 때문에 트랜잭션 처리 필요
+	   @Override
+	   public void restoreUser(HttpServletRequest request, HttpServletResponse response) {      // 비밀번호가 request에 저장
+	      
+	      // 계정 복원을 원하는 사용자의 아이디
+	      HttpSession session = request.getSession();
+	      SleepUserDTO sleepUser = (SleepUserDTO)session.getAttribute("sleepUser");
+	      String id = sleepUser.getId();
 
+	      // 계정 복구 진행
+	      int insertCount = userMapper.insertRestoreUser(id);
+	      int deleteCount = 0;
+	      if(insertCount > 0) {
+	         deleteCount = userMapper.deleteSleepUser(id);
+	      }
+	      
+	      // 응답
+	      try {
+	         response.setContentType("text/html; charset=UTF-8");
+	         PrintWriter out = response.getWriter();
+	         
+	         if(insertCount > 0 && deleteCount > 0) {
+	            out.println("<script>");
+	            out.println("alert('휴면 계정이 복구되었습니다. 휴면 계정 활성화를 위해 곧바로 로그인을 해주세요.');");
+	            out.println("location.href='" + request.getContextPath() + "/user/login/form';");
+	            out.println("</script>");
+	         
+	         } else {
+	            out.println("<script>");
+	            out.println("alert('휴면 계정이 복구되지 않았습니다.');");
+	            out.println("history.back();");
+	            out.println("</script>");
+	         }
+	         out.close();
+	         
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	   }
+	
+	
+	@Override
+	public String getNaverLoginApiURL(HttpServletRequest request) {
+		
+		String apiURL = null;
+		try {
+				String clientId = "7xL29rdSpxmE1AqWx3Zs";//애플리케이션 클라이언트 아이디값";
+				String redirectURI = URLEncoder.encode("http://localhost:9090/" + request.getContextPath() + "/user/naver/login", "UTF-8");
+				SecureRandom random = new SecureRandom();
+				String state = new BigInteger(130, random).toString();
+				
+				apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+				apiURL += "&client_id=" + clientId;
+				apiURL += "&redirect_uri=" + redirectURI;
+				apiURL += "&state=" + state;
+				HttpSession session = request.getSession();
+				session.setAttribute("state", state);
+			
+		} catch (Exception e) {
+			
+		}
+		return apiURL;
+	}
 }
