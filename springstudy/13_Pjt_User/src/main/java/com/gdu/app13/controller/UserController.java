@@ -33,7 +33,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/join/write")
-	public String joinWrite(@RequestParam(required=false) String location
+	// required=false 값이 없을 수도 있다.(location, promotion이 선택사항) required=true 값이 필수.
+	public String joinWrite(@RequestParam(required=false) String location  // @RequestParam은 1개의 값만 받을 수 있다. requst는 여러개 받을 수 있음.
 			              , @RequestParam(required = false) String promotion
 			              , Model model) {
 		model.addAttribute("location", location);
@@ -66,11 +67,11 @@ public class UserController {
 	
 	@PostMapping("/user/retire")
 	public void retire(HttpServletRequest request, HttpServletResponse response) {
-		userService.retire(request, response);
+		userService.retire(request, response);  // response로 응답받은 데이터를 service에 이동시킨다.
 	}
 	
 	@GetMapping("/user/login/form")
-	public String loginForm(HttpServletRequest request, Model model) {
+	public String loginForm(HttpServletRequest request, Model model) {  // model로 응답받은 데이터를 jsp파일에 이동시킨다.
 		
 		// 요청 헤더 referer : 이전 페이지의 주소가 저장
 		model.addAttribute("url", request.getHeader("referer"));  // 로그인 후 되돌아 갈 주소 url

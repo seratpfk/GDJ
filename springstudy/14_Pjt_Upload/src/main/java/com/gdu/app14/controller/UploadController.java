@@ -1,5 +1,6 @@
 package com.gdu.app14.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,7 @@ public class UploadController {
 	
 	@GetMapping("/upload/list")
 	public String list(Model model) {
-		model.addAttribute("uploadList", uploadService.getUploadList());  // <c:forEach items="${upload.uploadNo}" var="upload" >의 UploadList
-		
+		model.addAttribute("uploadList", uploadService.getUploadList());
 		return "upload/list";
 	}
 	
@@ -40,7 +40,7 @@ public class UploadController {
 	}
 	
 	@PostMapping("/upload/add")
-	public void add(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) { // 첨부파일이 있기 때문에 MultipartHttpServletRequest
+	public void add(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
 		uploadService.save(multipartRequest, response);
 	}
 	
@@ -56,9 +56,32 @@ public class UploadController {
 		return uploadService.download(userAgent, attachNo);
 	}
 	
-	@GetMapping("upload/attach/remove")
+	@ResponseBody
+	@GetMapping("/upload/downloadAll")
+	public ResponseEntity<Resource> downloadAll(@RequestHeader("User-Agent") String userAgent, @RequestParam("uploadNo") int uploadNo) {
+		return uploadService.downloadAll(userAgent, uploadNo);
+	}
+	
+	@PostMapping("/upload/edit")
+	public String edit(@RequestParam("uploadNo") int uploadNo, Model model) {
+		uploadService.getUploadByNo(uploadNo, model);
+		return "upload/edit";
+	}
+	
+	@PostMapping("/upload/modify")
+	public void modify(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
+		uploadService.modifyUpload(multipartRequest, response);
+	}
+	
+	@GetMapping("/upload/attach/remove")
 	public String attachRemove(@RequestParam("uploadNo") int uploadNo, @RequestParam("attachNo") int attachNo) {
 		uploadService.removeAttachByAttachNo(attachNo);
 		return "redirect:/upload/detail?uploadNo=" + uploadNo;
 	}
+	
+	@PostMapping("/upload/remove")
+	public void remove(HttpServletRequest request, HttpServletResponse response) {
+		uploadService.removeUpload(request, response);
+	}
+	
 }
