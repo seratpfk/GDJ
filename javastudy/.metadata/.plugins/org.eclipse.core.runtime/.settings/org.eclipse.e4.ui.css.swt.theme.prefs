@@ -1,2 +1,5 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=596eb133b1cba3bb89d8b471c2d9b3a42a4e7293
 eclipse.preferences.version=1
-themeid=org.eclipse.e4.ui.css.theme.e4_default
+themeid=org.eclipse.e4.ui.css.theme.e4_default6.0,6.1,6.2,6.3,10.0

@@ -2,3 +2,7 @@ eclipse.preferences.version=1
 migrated.task.repositories.secure.store=true
 org.eclipse.mylyn.tasks.ui.filters.nonmatching=true
 org.eclipse.mylyn.tasks.ui.filters.nonmatching.encouraged=true
+<<<<<<< HEAD
+=======
+org.eclipse.mylyn.tasks.ui.welcome.message=true
+>>>>>>> 596eb133b1cba3bb89d8b471c2d9b3a42a4e7293
