@@ -20,7 +20,7 @@
       <form id="frm_agree" action="${contextPath}/user/join/write">
          
          <div>
-            <input type="checkbox" id="check_all" class="blind">
+            <input type="checkbox" id="check_all" class="blind">  <!-- input의 id와 label의 for의 이름 통일 -->
             <label for="check_all" class="lbl_all">모두 동의</label>
          </div>
          
