@@ -12,19 +12,22 @@ import com.gdu.app05.service.MovieService;
 @Controller
 public class MyController3 {
 
-	@GetMapping("movie")
+	
+	// field
+	@Autowired  // Container(root-context.xml)ì— ì €ì¥ëœ beanì„ ê°€ì ¸ì˜¤ì‹œì˜¤.
+	private MovieService movieService;
+	
+
+	@GetMapping("/movie")
 	public String movie() {
 		return "movie";
 	}
 	
-	// field
-	@Autowired // Container(root-context.xml)¿¡ ÀúÀåµÈ beanÀ» °¡Á®¿À½Ã¿À.
-	private MovieService movieService;
+	// ì˜í™”ì§„í¥ìœ„ì›íšŒ API ì‚¬ìš©í•˜ê¸°
 	
-	// ¿äÃ» Ã³¸® ¸Ş¼Òµå
 	@ResponseBody
-	@GetMapping(value="movie/boxOfficeList"
-	          , produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/movie/boxOfficeList"
+			  , produces=MediaType.APPLICATION_JSON_VALUE)
 	public String boxOfficeList(@RequestParam String targetDt) {
 		return movieService.getBoxOffice(targetDt);
 	}

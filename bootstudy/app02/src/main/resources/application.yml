@@ -18,8 +18,8 @@ server:
 #database.connection
 spring:
   datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
     hikari:
+      driver-class-name: oracle.jdbc.OracleDriver
       jdbc-url: jdbc:oracle:thin:@localhost:1521:xe
       username: scott
       password: TIGER

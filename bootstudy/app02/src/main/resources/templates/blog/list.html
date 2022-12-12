@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<head th:replace="~{layout/header::head('목록')}"></head>
+<body>
    <div>
    
-   		<h1>블로그 목록(전체 ${totalRecord}개)</h1>
+   		<div th:replace="~(layout/header::body_title)"></div>
+   		
+   		<!--  
+   			<h1>블로그 목록(전체 ${totalRecord}개)</h1>
+   		-->
+   		<h1 th:text="|블로그 목록(전체 ${totalRecord}개)|"></h1>
    		
    		<div>
    			<!-- href가 없을때의 경로변경 방법 :
    				input에 id를 주고, script 태그 안에 작성. -->
    			<input type="button" value="블로그 작성하기" id="btn_write">
-   			<!-- 
-   				자바스크립트 내부에서 thymeleaf의 expression 사용을 위해서 th:inline="javascript"를 사용한다.
-   			-->
+   			
    			<script th:inline="javascript">
    			
-   				/* thymeleaf의 expression은 [[]]로 묶는다.
-   			
    				$('#btn_write').click(function(){
-   					location.href = [[@{/blog/write}]];
+   					location.href = '/blog/write';
    				});
    				
    			</script>
@@ -51,8 +53,13 @@
    						방법2:
    						<td><a th:href="@{/blog/increse/hit(blogNo=${blog.blogNo})}">${blog.title}</a></td>
    					-->
-					<tr th:each="blog.rowStat:${blogList}">
-						<td th:text="${beginNo - rowStat.index}"></td>
+   					<!--  
+   						파라미터가 2개일때 ,를 사용
+   						((blogNo=${blog.blogNo})),((blogName=${blog.blogName}))
+   					-->
+   					
+					<tr th:each="blog.vs:${blogList}">
+						<td th:text="${beginNo - vs.index}"></td>
 						<td><a th:href="@{/blog/increse/hit(blogNo=${blog.blogNo})}" th:text="${blog.title}"></a></td>
 						<td th:text="${blog.hit}"></td>
 						<td th:text="${blog.createDate}"></td>
@@ -61,8 +68,8 @@
    				</tbody>
    				<tfoot>
    					<tr>
-   						<!-- th:text="HTML구성요소포함텍스트 ex)tag 등" -->
-   						<td colspan="4" th:text="${paging}"></td>
+   						<!-- th:utext="HTML구성요소포함텍스트 ex)tag 등" -->
+   						<td colspan="4" th:utext="${paging}"></td>
    					</tr>
    				</tfoot>
    			</table>

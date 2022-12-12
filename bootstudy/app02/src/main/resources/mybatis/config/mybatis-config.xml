@@ -11,8 +11,8 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.gdu.app15.domain.BlogDTO" alias="BlogDTO" />
-		<typeAlias type="com.gdu.app15.domain.CommentDTO" alias="CommentDTO" />
+		<typeAlias type="com.gdu.app02.domain.BlogDTO" alias="BlogDTO" />
+		<typeAlias type="com.gdu.app02.domain.CommentDTO" alias="CommentDTO" />
 	</typeAliases>
 
 </configuration>
